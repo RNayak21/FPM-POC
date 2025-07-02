@@ -1,0 +1,6 @@
+ID;totalDefects;openCount;closedCount;excededDueDate;inProgressCount;functionalArea;prcoessAreaManager
+1;10;4;3;1;2;MAKE;Ashok
+2;9;4;3;1;2;PLAN;Ram
+3;4;4;3;1;2;DELIVERY;Radha
+4;7;4;3;1;2;LOGISTIC;Carla
+5;8;4;3;1;2;FINANCE;John
