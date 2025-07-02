@@ -23,3 +23,13 @@ File or Folder | Purpose
 ## Learn More
 
 Learn more at https://cap.cloud.sap/docs/get-started/.
+
+## 3 FPM Demo Tasks-->
+
+    - 1. On Click of Tile Navigate to new Page which shows the basic details and Process flow
+    - 2. On Click of Object Create subsections ( Process Flow, Chart)
+    -3. On main page table create one action button on click of that it will create a new Defect/   JIRA and it will visible in below table.
+    - 4. Hide and Show column functionality
+    - 5. Dyanmic Column 
+    - 6. Edit Functionality
+    

@@ -3,15 +3,15 @@
         <f:title>
             <f:DynamicPageTitle id="_IDGenDynamicPageTitle">
                 <f:heading>
-                    <Title id="_IDGenTitle" text="JIRA" level="H2"/>
+                    <Title id="_IDGenTitle" text="JIRA DASHBOARD" level="H2"/>
                 </f:heading>
                 <f:snappedContent>
-                    <Panel id="_IDGenPanel" headerText="Process Area">
+                    <Panel id="_IDGenPanel" headerText="Process Area - HIGH PRIORITY DEFECT">
                         <HeaderContainer id="_IDGenHeaderContainer" scrollStep="200" showDividers="false" content="{
                                     path: '/ProcessAreaEntity'
                                 }">
                             <GenericTile id="_IDGenGenericTile" header="{functionalArea}" press="onTilePress">
-                                <TileContent id="_IDGenTileContent" footer="Functional Lead: {prcoessAreaManager}">
+                                <TileContent id="_IDGenTileContent" footer="Lead: {prcoessAreaManager}">
                                     <NumericContent id="_IDGenNumericContent" value="{totalDefects}" valueColor="Good"/>
                                 </TileContent>
                             </GenericTile>
