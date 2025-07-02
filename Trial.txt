@@ -4,3 +4,8 @@
 
 #2nd Commit
 Welcome
+
+#3 FPM Demo Tasks-->
+1. On Click of Tile Navigate to new Page which shows the basic details and Process flow
+2. On Click of Object Create subsections
+3. On main page table create one action button on click of that it will create a new Defect/JIRA and it will visible in below table.
