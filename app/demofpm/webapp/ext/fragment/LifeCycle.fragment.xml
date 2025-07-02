@@ -1,0 +1,5 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox core:require="{ handler: 'demo/com/demofpm/ext/fragment/LifeCycle'}">
+		<Button text="LifeCycle" press="handler.onPress" />
+	</VBox>
+</core:FragmentDefinition>

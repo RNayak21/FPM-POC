@@ -1,0 +1,181 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "demo.com.demofpm",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:fpm",
+      "version": "1.18.1",
+      "toolsId": "b0270929-3db9-4088-8ca7-8a0deb5ccdd5"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/demo-fpm/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.136.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.core": {},
+        "sap.fe.macros": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "demo.com.demofpm.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
+      "routes": [
+        {
+          "name": "JiraEntityMain",
+          "pattern": ":?query:",
+          "target": [
+            "JiraEntityMain"
+          ]
+        },
+        {
+          "name": "JiraEntityObjectPage",
+          "pattern": "JiraEntity({JiraEntityKey}):?query:",
+          "target": [
+            "JiraEntityMain",
+            "JiraEntityObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "JiraEntityMain": {
+          "type": "Component",
+          "id": "JiraEntityMain",
+          "name": "sap.fe.core.fpm",
+          "options": {
+            "settings": {
+              "navigation": {
+                "JiraEntity": {
+                  "detail": {
+                    "route": "JiraEntityObjectPage"
+                  }
+                }
+              },
+              "contextPath": "/JiraEntity",
+              "viewName": "demo.com.demofpm.ext.main.Main"
+            }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
+        },
+        "JiraEntityObjectPage": {
+          "type": "Component",
+          "id": "JiraEntityObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/JiraEntity",
+              "content": {
+                "header": {
+                  "anchorBarVisible": true,
+                  "visible": true
+                },
+                "body": {
+                  "sections": {
+                    "LifeCycle": {
+                      "template": "demo.com.demofpm.ext.fragment.LifeCycle",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Information"
+                      },
+                      "title": "Defect LifeCycle"
+                    },
+                    "ChartDisplay": {
+                      "template": "demo.com.demofpm.ext.fragment.ChartDisplay",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "LifeCycle"
+                      },
+                      "title": "Process Analytics"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/JiraEntity({JiraEntityKey})"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
+    }
+  },
+  "sap.fiori": {}
+}
