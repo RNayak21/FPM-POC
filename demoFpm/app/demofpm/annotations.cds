@@ -19,6 +19,48 @@ annotate service.JiraEntity with @(
             Updatable: true
         },
     },
+    // UI.Chart #TotalDefectsperUser : {
+    //     $Type : 'UI.ChartDefinitionType',
+    //     Title : 'DefectsFlow',
+    //     ChartType : #Column,
+    //     Dimensions : [
+    //         defectID,
+    //         userId,
+    //     ],
+    //     DimensionAttributes : [
+    //         {
+    //             $Type : 'UI.ChartDimensionAttributeType',
+    //             Dimension : defectID,
+    //             Role : #Category,
+    //         },
+    //         {
+    //             $Type : 'UI.ChartDimensionAttributeType',
+    //             Dimension : userId,
+    //             Role : #Series,
+    //         },
+    //     ],
+    //     // DynamicMeasures : [
+    //     //     '',
+    //     // ],
+    //     // MeasureAttributes : [
+    //     //     {
+    //     //         $Type : 'UI.ChartMeasureAttributeType',
+    //     //         DynamicMeasure : '',
+    //     //         Role : #Axis1,
+    //     //     },
+    //     // ],
+
+    //      Measures : [
+    //         defectID,
+    //     ],
+    //     MeasureAttributes : [
+    //         {
+    //             $Type : 'UI.ChartMeasureAttributeType',
+    //             Measure : defectID,
+    //             Role : #Axis1,
+    //         },
+    //     ],
+    // },
 );
 
 annotate service.JiraEntity with @(
@@ -26,6 +68,7 @@ annotate service.JiraEntity with @(
         defectID,
         userId,
         functionalArea,
+        defectStatus,
     ],
     UI.LineItem #tableMacro : [
         {
@@ -199,7 +242,7 @@ annotate service.JiraEntity with {
             Label : 'Defect ID',
         },
         Common.ValueListWithFixedValues : false,
-        Common.Text : defectDesc,
+        Common.Text : defectStatus,
     )
 };
 
@@ -245,6 +288,24 @@ annotate service.JiraEntity with {
     assignee @(
         UI.MultiLineText : true,
         Common.FieldControl : #Mandatory,
+    )
+};
+
+annotate service.JiraEntity with {
+    defectStatus @(
+        Common.Label : 'DefectStatus',
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'JiraEntity',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : defectStatus,
+                    ValueListProperty : 'defectStatus',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : true,
     )
 };
 

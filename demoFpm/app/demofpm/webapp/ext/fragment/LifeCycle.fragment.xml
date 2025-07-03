@@ -1,5 +1,73 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
-	<VBox core:require="{ handler: 'demo/com/demofpm/ext/fragment/LifeCycle'}">
-		<Button text="LifeCycle" press="handler.onPress" />
-	</VBox>
+
+
+
+
+
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.m"
+    xmlns:suite="sap.suite.ui.commons"
+    xmlns:macros="sap.fe.macros"
+ >
+   
+ 
+    <m:VBox
+        id="_IDGenVBox2"
+        core:require="{ handler: 'demo/com/demofpm/ext/fragment/LifeCycle'}"
+     >
+       
+ 
+        <m:Panel id="_IDGenPanel4">
+            <!-- <m:Button id="_IDGenButton3" text="Show End to End Flow" press="onZoomInS" /> -->
+         
+ 
+            <m:HBox
+                id="_IDGenHBox1"
+                renderType="Bare"
+            >
+                <m:Label
+                    id="_IDGenLabel1"
+                    text="Life Cycle sample scrollable"
+                />
+            </m:HBox>
+           
+            <suite:ProcessFlow
+                id="processflow4"
+                showLabels="true"
+                nodePress="handler.onNodePress"
+                labelPress="handler.onLabelPress"
+                nodes="{data3>/nodes}"
+                lanes="{data3>/lanes}"
+            >
+                <suite:nodes>
+                    <suite:ProcessFlowNode
+                        id="_IDGenProcessFlowNode3"
+                        laneId="{data3>lane}"
+                        nodeId="{data3>id}"
+                        title="{data3>title}"
+                        titleAbbreviation="{data3>titleAbbreviation}"
+                        children="{path:'data3>children', formatter:'handler.formatConnectionLabels'}"
+                        state="{data3>state}"
+                        stateText="{data3>stateText}"
+                        texts="{data3>texts}"
+                        highlighted="{data3>highlighted}"
+                        focused="{data3>focused}"
+                        type="{data3>type}"
+                    />
+                </suite:nodes>
+                <suite:lanes>
+                    <suite:ProcessFlowLaneHeader
+                        id="_IDGenProcessFlowLaneHeader3"
+                        laneId="{data3>id}"
+                        iconSrc="{data3>icon}"
+                        text="{data3>label}"
+                        position="{data3>position}"
+                        state="{data3>state}"
+                    />
+                </suite:lanes>
+            </suite:ProcessFlow>
+ 
+ 
+        </m:Panel>
+    </m:VBox>
 </core:FragmentDefinition>

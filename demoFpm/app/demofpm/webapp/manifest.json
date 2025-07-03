@@ -26,6 +26,7 @@
       }
     }
   },
+  
   "sap.ui": {
     "technology": "UI5",
     "icons": {
@@ -52,7 +53,8 @@
         "sap.fe.core": {},
         "sap.fe.macros": {},
         "sap.fe.templates": {},
-        "sap.f": {}
+        "sap.f": {},
+        "sap.suite.ui.commons": {}
       }
     },
     "contentDensities": {
@@ -175,6 +177,15 @@
       "type": "XML",
       "async": true,
       "id": "appRootView"
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController#demo.com.demofpm::JiraEntityObjectPage": {
+            "controllerName": "demo.com.demofpm.ext.controller.CustomObjectPageController"
+          }
+        }
+      }
     }
   },
   "sap.fiori": {}
