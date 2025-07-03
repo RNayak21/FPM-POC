@@ -7,7 +7,6 @@ using {
 entity jira : cuid , managed{
   defectID              : String;
   defectDesc            : String;
-  userId                : String;
   startDate             : Timestamp;
   endDate               : Timestamp;
   functionalArea        : String;

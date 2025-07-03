@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox core:require="{ handler: 'demo/com/demofpm/ext/fragment/ProcessAreaDefectAnalytics'}">
+		<!-- <macros:Chart
+      id="DefectStatusChartId"
+      metaPath="@com.sap.vocabularies.UI.v1.Chart"     
+      selectionMode="Single"
+    /> -->
+	</VBox>
+</core:FragmentDefinition>

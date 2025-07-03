@@ -66,7 +66,6 @@ annotate service.JiraEntity with @(
 annotate service.JiraEntity with @(
     UI.SelectionFields #filterBarMacro : [
         defectID,
-        userId,
         functionalArea,
         defectStatus,
     ],
@@ -84,14 +83,14 @@ annotate service.JiraEntity with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : userId,
+            Value : defectStatus,
+            Label : 'Defect Status',
             ![@UI.Importance] : #High,
         },
         {
             $Type : 'UI.DataField',
-            Value : defectStatus,
-            Label : 'Defect Status',
-            ![@UI.Importance] : #High,
+            Value : assignee,
+            Label : 'Assigned To',
         },
         {
             $Type : 'UI.DataField',
@@ -106,23 +105,18 @@ annotate service.JiraEntity with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : assignee,
-            Label : 'assignee'
-        },
-        {
-            $Type : 'UI.DataField',
             Value : endDate,
-            Label : 'endDate'
+            Label : 'Due Date'
         },
         {
             $Type : 'UI.DataField',
             Value : reporter,
-            Label : 'reporter'
+            Label : 'Reported By'
         },
         {
             $Type : 'UI.DataField',
             Value : team,
-            Label : 'team'
+            Label : 'Resolving Team'
         },
         {
             $Type : 'UI.DataFieldForAction',
@@ -170,7 +164,7 @@ annotate service.JiraEntity with @(
             Label : 'Information',
             ID : 'Information',
             Target : '@UI.FieldGroup#Information',
-        },
+        }
     ],
     UI.FieldGroup #Information : {
         $Type : 'UI.FieldGroupType',
@@ -192,10 +186,6 @@ annotate service.JiraEntity with @(
             {
                 $Type : 'UI.DataField',
                 Value : functionalArea,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : userId,
             },
             {
                 $Type : 'UI.DataField',
@@ -247,25 +237,6 @@ annotate service.JiraEntity with {
 };
 
 annotate service.JiraEntity with {
-    userId @(
-        Common.Label : 'User ID',
-        Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'JiraEntity',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : userId,
-                    ValueListProperty : 'userId',
-                },
-            ],
-            Label : 'User ID',
-        },
-        Common.ValueListWithFixedValues : false,
-    )
-};
-
-annotate service.JiraEntity with {
     functionalArea @(
         Common.Label : 'Functional Area',
         Common.ValueList : {
@@ -308,4 +279,80 @@ annotate service.JiraEntity with {
         Common.ValueListWithFixedValues : true,
     )
 };
+
+annotate service.ProcessAreaEntity with @(
+    UI.HeaderFacets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'DetailInformation',
+            Target : '@UI.FieldGroup#DetailInformation',
+        },
+    ],
+    UI.FieldGroup #DetailInformation : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : functionalArea,
+                Label : 'Functional Area',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : prcoessAreaManager,
+                Label : 'Functional Lead',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : totalDefects,
+                Label : 'Total No. of Defects',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : openCount,
+                Label : 'Open Defects',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : inProgressCount,
+                Label : 'In Progress Defects',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : closedCount,
+                Label : 'Closed Defects',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : excededDueDate,
+                Label : 'No. of Defects with Exceeded Due Date',
+            },
+        ],
+    }
+);
+
+annotate service.ProcessAreaEntity with @(
+  UI.Chart: {
+    ChartType: #Column,
+    Dimensions: ['functionalArea'],
+    Measures: ['openCount', 'closedCount', 'inProgressCount'],
+    DimensionAttributes: [
+      { Dimension: 'functionalArea', Role: #Category }
+    ],
+    MeasureAttributes: [
+      { Measure: 'openCount', Role: #Axis1 },
+      { Measure: 'closedCount', Role: #Axis1 },
+      { Measure: 'inProgressCount', Role: #Axis1 }
+    ]
+  }
+);
+
+annotate service.ProcessAreaEntity with @(Aggregation.ApplySupported  : {
+    $Type : 'Aggregation.ApplySupportedType',
+    Transformations: [
+        'aggregate',
+        'groupby',
+        'filter'
+    ]
+});
+
 

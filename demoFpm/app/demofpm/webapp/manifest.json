@@ -26,7 +26,6 @@
       }
     }
   },
-  
   "sap.ui": {
     "technology": "UI5",
     "icons": {
@@ -108,6 +107,13 @@
             "JiraEntityMain",
             "JiraEntityObjectPage"
           ]
+        },
+        {
+          "name": "ProcessAreaEntityObjectPage",
+          "pattern": "ProcessAreaEntity({ID}):?query:",
+          "target": [
+            "ProcessAreaEntityObjectPage"
+          ]
         }
       ],
       "targets": {
@@ -169,6 +175,33 @@
           },
           "controlAggregation": "midColumnPages",
           "contextPattern": "/JiraEntity({JiraEntityKey})"
+        },
+        "ProcessAreaEntityObjectPage": {
+          "type": "Component",
+          "id": "ProcessAreaEntityObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/ProcessAreaEntity",
+              "content": {
+                "header": {
+                  "anchorBarVisible": true,
+                  "visible": true
+                },
+                "body": {
+                  "sections": {
+                    "ProcessAreaDefectAnalytics": {
+                      "template": "demo.com.demofpm.ext.fragment.ProcessAreaDefectAnalytics",
+                      "title": "Defect Ananlytics"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/ProcessAreaEntity({ID})"
         }
       }
     },
