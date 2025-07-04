@@ -35,6 +35,5 @@ entity task : cuid, managed {
   priority              : String;
   dueDate               : Date;
   tags                  : String;  
-  responsibleTeam       : String;
-   
+  responsibleTeam       : String;   
 }

@@ -30,8 +30,8 @@
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "8.2",
     "@sap/hdi-deploy": "^5.4.1",
-    "rimraf": "^5.0.5",
-    "mbt": "^1.2.29"
+    "mbt": "^1.2.29",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "start": "cds-serve",
@@ -40,7 +40,13 @@
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
-  "cds": {},
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite"
+      }
+    }
+  },
   "sapux": [
     "app/demofpm"
   ]

@@ -12,8 +12,8 @@
                                     path: '/ProcessAreaEntity'
                                 }">
                                 <GenericTile id="_IDGenGenericTile" header="{functionalArea}" press="onTilePress">
-                                    <TileContent id="_IDGenTileContent" footer="Lead: {prcoessAreaManager}">
-                                        <NumericContent id="_IDGenNumericContent" value="{totalDefects}" valueColor="Good"/>
+                                    <TileContent id="_IDGenTileContent" footer="Manager: {prcoessAreaManager}">
+                                        <NumericContent id="_IDGenNumericContent" value="{totalDefects}" valueColor="Error" />
                                     </TileContent>
                                 </GenericTile>
                             </HeaderContainer>

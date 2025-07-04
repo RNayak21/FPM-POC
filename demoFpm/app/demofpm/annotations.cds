@@ -1,6 +1,22 @@
 using demoFpm as service from '../../srv/service';
 using from '../capabilities';
 
+annotate service.ProcessAreaEntity with @(
+ Capabilities :{
+    DeleteRestrictions : {
+        $Type : 'Capabilities.DeleteRestrictionsType',
+        Deletable: false
+    },
+ },
+    UI.HeaderInfo : {
+        Title : {
+            $Type : 'UI.DataField',
+            Value : functionalArea,
+        },
+        TypeName : '',
+        TypeNamePlural : '',
+    },
+);
 
 annotate service.JiraEntity with @(
     Capabilities : {
@@ -594,18 +610,23 @@ annotate service.taskEntity with @(
     UI.LineItem #tableMacro1 : [
         {
             $Type : 'UI.DataField',
+            Value : taskId,
+            Label : '{i18n>TaskId}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : responsibleTeam,
+            Label : 'Responsible Team',
+        },
+        {
+            $Type : 'UI.DataField',
             Value : title,
-            Label : 'Title',
+            Label : '{i18n>TaskDescription}',
         },
         {
             $Type : 'UI.DataField',
             Value : assignee,
             Label : 'Assignee',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : responsibleTeam,
-            Label : 'ResponsibleTeam',
         },
         {
             $Type : 'UI.DataField',
