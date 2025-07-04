@@ -2,6 +2,8 @@ using my.bookshop as my from '../db/schema';
 
 service demoFpm {
     entity JiraEntity        as projection on my.jira;
+
+    entity taskEntity as projection on my.task;
     entity ProcessAreaEntity as
         projection on my.processArea {
             Key ID : String,

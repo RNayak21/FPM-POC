@@ -1,0 +1,6 @@
+taskId,title,assignee,status,priority,dueDate,tags,responsibleTeam
+1,Build login screen,Alex,In Progress,High,2025-07-10,"frontend, auth",Web App Revamp
+2,API integration-tasks,Priya,To Do,Medium,2025-07-12,"backend, API",Web App Revamp
+3,Fix logout issue on mobile,Rahim,Done,Low,2025-06-30,"bug, mobile",Mobile App Fixes
+4,Design landing page,Sunita,In Progress,High,2025-07-15,"frontend, UI",Web App Revamp
+5,Setup CI/CD pipeline,Deepak,To Do,Medium,2025-07-20,"devops, backend",Infrastructure Upgrade

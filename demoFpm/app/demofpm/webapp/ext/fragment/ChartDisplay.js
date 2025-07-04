@@ -8,7 +8,7 @@ sap.ui.define([
             MessageToast.show("Custom handler invoked.");
         },
 
-        onChartSelectionChange: function(oEvent){
+        onChartSelect: function(oEvent){
             //Step 1: Get The view object
             // var oView = this.editFlow.getView();
             // //Step 2: Get The local model

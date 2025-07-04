@@ -14,6 +14,7 @@ entity jira : cuid , managed{
   team                  : String;    
   assignee              : String;    
   reporter              : String;
+  //to_Task       : Association to many task on to_Task.to_Jira = $self;
 }
 
 entity processArea : cuid , managed{
@@ -24,4 +25,16 @@ entity processArea : cuid , managed{
   inProgressCount       : String;
   functionalArea        : String;
   prcoessAreaManager    : String;
+}
+
+entity task : cuid, managed {
+  taskId                : String;    
+  title                 : String;
+  assignee              : String;
+  status                : String;
+  priority              : String;
+  dueDate               : Date;
+  tags                  : String;  
+  responsibleTeam       : String;
+   
 }

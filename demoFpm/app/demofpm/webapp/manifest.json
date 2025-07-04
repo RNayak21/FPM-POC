@@ -167,6 +167,14 @@
                         "anchor": "LifeCycle"
                       },
                       "title": "Process Analytics"
+                    },
+                    "TableSection": {
+                      "template": "demo.com.demofpm.ext.fragment.TableSection",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "ChartDisplay"
+                      },
+                      "title": "Process Info"
                     }
                   }
                 }
@@ -193,7 +201,7 @@
                   "sections": {
                     "ProcessAreaDefectAnalytics": {
                       "template": "demo.com.demofpm.ext.fragment.ProcessAreaDefectAnalytics",
-                      "title": "Defect Ananlytics"
+                      "title": "{i18n>defectAnanlytics}"
                     }
                   }
                 }

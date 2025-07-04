@@ -1,6 +1,9 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
     <VBox core:require="{ handler: 'demo/com/demofpm/ext/fragment/ChartDisplay'}">
-        <Button text="ChartDisplay" press="handler.onPress"/>
+        <!-- <Button text="ChartDisplay" press="handler.onPress"/> -->
         <!-- <macros:Chart id="Chart" metaPath="@com.sap.vocabularies.UI.v1.Chart#TotalDefectsperUser" contextPath="/JiraEntity" selectionMode="Single" selectionChange="handler.onChartSelectionChange" personalization="Type,Item,Sort"/> -->
+        <!-- <macros:Chart id="DefectsChart" metaPath="@com.sap.vocabularies.UI.v1.Chart##DefectsChart" contextPath="/ProcessAreaEntity" personalization="Type,Item,Sort" selectionMode="Single" selectionChange="handler.onChartSelect"/>  -->
+        
+        <macros:Chart id="Chart" metaPath="@com.sap.vocabularies.UI.v1.Chart#defectschart" contextPath="/ProcessAreaEntity" personalization="Type,Item,Sort" selectionMode="Single" selectionChange="onChartSelect"/>
     </VBox>
 </core:FragmentDefinition>

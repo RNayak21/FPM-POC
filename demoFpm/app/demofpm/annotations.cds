@@ -1,4 +1,6 @@
 using demoFpm as service from '../../srv/service';
+using from '../capabilities';
+
 
 annotate service.JiraEntity with @(
     Capabilities : {
@@ -19,6 +21,20 @@ annotate service.JiraEntity with @(
             Updatable: true
         },
     },
+
+    UI.Chart #DefectsChart : {
+    $Type:'UI.ChartDefinitionType',
+    ChartType:#Column,
+    Title:'Defects by Area',
+    Dimensions:[ functionalArea ],
+    DimensionAttributes:[
+      { $Type:'UI.ChartDimensionAttributeType', Dimension:functionalArea, Role:#Category }
+    ],
+    // Measures:[ TotalDefectsAgg ],
+    // MeasureAttributes:[
+    //   { $Type:'UI.ChartMeasureAttributeType', Measure:TotalDefectsAgg, Role:#Axis1 }
+    // ]
+  }
     // UI.Chart #TotalDefectsperUser : {
     //     $Type : 'UI.ChartDefinitionType',
     //     Title : 'DefectsFlow',
@@ -327,7 +343,188 @@ annotate service.ProcessAreaEntity with @(
                 Label : 'No. of Defects with Exceeded Due Date',
             },
         ],
-    }
+    },
+    UI.LineItem #tableMacro : [
+        {
+            $Type : 'UI.DataField',
+            Value : excededDueDate,
+            Label : 'excededDueDate',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : functionalArea,
+            Label : 'functionalArea',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : ID,
+            Label : 'ID',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : inProgressCount,
+            Label : 'inProgressCount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : openCount,
+            Label : 'openCount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : prcoessAreaManager,
+            Label : 'prcoessAreaManager',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : totalDefects,
+            Label : 'totalDefects',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : closedCount,
+            Label : 'closedCount',
+        },
+    ],
+    UI.Chart #defectschart : {
+        $Type : 'UI.ChartDefinitionType',
+        Title : '{i18n>defectschart}',
+        ChartType : #Column,
+        Dimensions : [
+            functionalArea,
+        ],
+        DimensionAttributes : [
+            {
+                $Type : 'UI.ChartDimensionAttributeType',
+                Dimension : functionalArea,
+                Role : #Category,
+            },
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#TotalDefectsAgg',
+        ],
+        MeasureAttributes : [
+            {
+                $Type : 'UI.ChartMeasureAttributeType',
+                DynamicMeasure : '@Analytics.AggregatedProperty#TotalDefectsAgg',
+                Role : #Axis1,
+            },
+        ],
+    },
+    UI.LineItem #tableMacro1 : [
+        {
+            $Type : 'UI.DataField',
+            Value : ID,
+            Label : 'ID',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : totalDefects,
+            Label : 'totalDefects',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : functionalArea,
+            Label : 'functionalArea',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : prcoessAreaManager,
+            Label : 'prcoessAreaManager',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : closedCount,
+            Label : 'closedCount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : excededDueDate,
+            Label : 'excededDueDate',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : inProgressCount,
+            Label : 'inProgressCount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : openCount,
+            Label : 'openCount',
+        },
+    ],
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Value : totalDefects,
+            Label : ' totalDefects',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : openCount,
+            Label : 'openCount ',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : closedCount,
+            Label : 'closedCount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : excededDueDate,
+            Label : 'excededDueDate',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : inProgressCount,
+            Label : 'inProgressCount',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : functionalArea,
+            Label : 'functionalArea',
+        },
+    ],
+    // UI.Chart #totalDefects : {
+    //     $Type : 'UI.ChartDefinitionType',
+    //     Title : '{i18n>Defectschart}',
+    //     ChartType : #Column,
+    //     Dimensions : [
+    //         functionalArea,
+    //     ],
+    //     DimensionAttributes : [
+    //         {
+    //             $Type : 'UI.ChartDimensionAttributeType',
+    //             Dimension : functionalArea,
+    //             Role : #Category,
+    //         },
+    //     ],
+    //    Measures:[ totalDefects ],
+    // MeasureAttributes:[
+    //   { $Type:'UI.ChartMeasureAttributeType', Measure:totalDefects, Role:#Axis1 }
+//     // ]
+  
+
+
+//   UI.Chart #DefectsChart: {
+//     $Type: 'UI.ChartDefinitionType',
+//      Title : '{i18n>Defectschart}',
+//     ChartType: #Column,
+//     Dimensions: [functionalArea],
+//     //DynamicMeasures: [ '@Analytics.AggregatedProperty#TotalDefectsAgg' ],
+//     DimensionAttributes: [
+//       { $Type:'UI.ChartDimensionAttributeType', Dimension:functionalArea, Role:#Category }
+//     ],
+//     MeasureAttributes: [
+//       {
+//         $Type:'UI.ChartMeasureAttributeType',
+//         Measure:totalDefects,
+//         //DynamicMeasure: '@Analytics.AggregatedProperty#TotalDefectsAgg',
+//         Role: #Axis1
+//       }
+//     ]
+//   }
+    
 );
 
 annotate service.ProcessAreaEntity with @(
@@ -355,4 +552,119 @@ annotate service.ProcessAreaEntity with @(Aggregation.ApplySupported  : {
     ]
 });
 
+
+annotate service.taskEntity with @(
+    UI.LineItem #tableMacro : [
+        {
+            $Type : 'UI.DataField',
+            Value : ID,
+            Label : 'ID',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : title,
+            Label : 'title',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : tags,
+            Label : 'Tags',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : status,
+            Label : 'status',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : responsibleTeam,
+            Label : 'responsibleTeam',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : priority,
+            Label : 'priority',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : assignee,
+            Label : 'assignee',
+        },
+    ],
+    UI.LineItem #tableMacro1 : [
+        {
+            $Type : 'UI.DataField',
+            Value : title,
+            Label : 'Title',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : assignee,
+            Label : 'Assignee',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : responsibleTeam,
+            Label : 'ResponsibleTeam',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : priority,
+            Label : 'Priority',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : tags,
+            Label : 'Tags',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : status,
+            Label : 'Status',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : dueDate,
+            Label : 'DueDate',
+        },
+        
+    ],
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Value : taskId,
+            Label : 'ID',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : priority,
+            Label : 'priority',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : title,
+            Label : ' title ',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : status,
+            Label : 'status',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : dueDate,
+            Label : 'dueDate',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : tags,
+            Label : 'tags',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : responsibleTeam,
+            Label : 'responsibleTeam',
+        },
+    ],
+);
 

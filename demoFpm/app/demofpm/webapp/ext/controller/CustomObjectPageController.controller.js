@@ -10,6 +10,8 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
              * @memberOf demo.com.demofpm.ext.controller.CustomObjectPageController
              */
 			onInit: function () {
+              
+                 
 				// you can access the Fiori elements extensionAPI via this.base.getExtensionAPI
 				//
 				// var oModel = this.base.getExtensionAPI().getModel();
@@ -170,6 +172,24 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                     console.error("ProcessFlow control not found!");
                 }
             },
+            _loadChartData:function () {
+                const oODataModel = this.getView().getModel(); // OData v4 model
+                const sApply = "$apply=groupby((functionalArea),aggregate(totalDefects with sum as TotalDefectsAgg))";
+          
+                oODataModel.read("/processArea", {
+                  urlParameters: {
+                    $apply: "groupby((functionalArea),aggregate(totalDefects with sum as TotalDefectsAgg))"
+                  },
+                  success: (oData) => {
+                    // oData.value contains aggregated chart data
+                    const oChartModel = new JSONModel(oData.value);
+                    this.getView().setModel(oChartModel, "chartData");
+                  },
+                  error: (oError) => {
+                    console.error("Failed to load chart data:", oError);
+                  }
+                });
+              }
 			
 		}
 	});
