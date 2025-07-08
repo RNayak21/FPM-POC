@@ -110,23 +110,34 @@ annotate service.JiraEntity with @(
         {
             $Type : 'UI.DataField',
             Value : defectDesc,
-            Label : 'Defect Desc',
+            Label : '{i18n>Description}',
             ![@UI.Importance] : #High,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : priority,
+            Label : '{i18n>Priority}',
         },
         {
             $Type : 'UI.DataField',
             Value : defectStatus,
-            Label : 'Defect Status',
+            Label : '{i18n>Status}',
             ![@UI.Importance] : #High,
         },
         {
             $Type : 'UI.DataField',
+            Value : reporter,
+            Label : '{i18n>Reporter}'
+        },
+        {
+            $Type : 'UI.DataField',
             Value : assignee,
-            Label : 'Assigned To',
+            Label : '{i18n>Assignee}',
         },
         {
             $Type : 'UI.DataField',
             Value : functionalArea,
+            Label : '{i18n>FunctionalArea}',
             ![@UI.Importance] : #High,
         },
         {
@@ -142,8 +153,13 @@ annotate service.JiraEntity with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : reporter,
-            Label : 'Reported By'
+            Value : updatedDate,
+            Label : '{i18n>UpdatedDate}',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : completedDate,
+            Label : 'Completed Date',
         },
         {
             $Type : 'UI.DataField',
@@ -250,7 +266,7 @@ annotate service.JiraEntity with @(
 
 annotate service.JiraEntity with {
     defectID @(
-        Common.Label : 'Defect ID',
+        Common.Label : '{i18n>JiraId}',
         Common.ValueList : {
             $Type : 'Common.ValueListType',
             CollectionPath : 'JiraEntity',
@@ -264,8 +280,7 @@ annotate service.JiraEntity with {
             Label : 'Defect ID',
         },
         Common.ValueListWithFixedValues : false,
-        Common.Text : defectStatus,
-    )
+        )
 };
 
 annotate service.JiraEntity with {
@@ -296,7 +311,7 @@ annotate service.JiraEntity with {
 
 annotate service.JiraEntity with {
     defectStatus @(
-        Common.Label : 'DefectStatus',
+        Common.Label : '{i18n>Status}',
         Common.ValueList : {
             $Type : 'Common.ValueListType',
             CollectionPath : 'JiraEntity',

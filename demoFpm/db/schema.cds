@@ -15,6 +15,9 @@ entity jira : cuid, managed {
   team           : String;
   assignee       : String;
   reporter       : String;
+  priority       : String;
+  updatedDate    : Timestamp;
+  completedDate  : Timestamp;
 //to_Task       : Association to many task on to_Task.to_Jira = $self;
 }
 

@@ -1,7 +1,11 @@
-ID;defectID;defectDesc;startDate;endDate;functionalArea;defectStatus;team;assignee;reporter
-1;070042;Issue 1;2024-06-02;2024-06-21;MAKE;Open;BTP;000553;ABC
-2;070043;Issue 2;2024-06-01;2024-06-03;PLAN;Closed;BTP;000594;ABC
-3;070046;Issue 3;2023-08-06;2023-08-07;FINANCE;In Progress;BTP;000387;ABC
-4;070008;Issue 4;2024-06-03;2024-06-05;DELIVERY;Open;BTP;000004;ABC
-5;070047;Issue 5;2023-08-07;2023-08-07;LOGISTIC;Open;BTP;000422;ABC
-
+ID;defectID;defectDesc;priority;startDate;endDate;functionalArea;defectStatus;team;assignee;reporter;updatedDate;completedDate
+1;JIR-7042;BTP App fails to render custom Fiori tiles;High;2024-06-02;2024-06-21;MAKE;Open;BTP App;Lars Mueller;Anna Novak;;
+2;JIR-7043;CPI integration with S/4HANA fails on token exchange;Medium;2024-06-01;2024-06-03;Plan;Closed;BTP CPI;Sofia Martins;Rajesh Patel;2024-06-03;2024-06-03
+3;JIR-7046;Finance data not syncing via BTP destinations;High;2023-08-06;2023-08-07;Finance;In Progress;ABAP;Johan Eriksson;Clara Dupont;2023-08-07;
+4;JIR-7008;Delivery app crashes due to SAP Launchpad misconfig;Medium;2024-06-03;2024-06-05;Delivery;Open;BTP CPI;Mateo Rossi;Emily Clarke;;
+5;JIR-7047;Logistics workflow fails in BTP Workflow Service;High;2023-08-07;2023-08-07;Logistics;Open;BTP App;Elena Petrova;Daniel Kim;;
+6;JIR-7048;Master Data replication fails in BTP Integration Suite;Medium;2024-05-20;2024-05-22;Master Data;Closed;ABAP;Nikolai Ivanov;Maria Gonzalez;2024-05-22;2024-05-22
+7;JIR-7049;Authorization error in Quality module on BTP;High;2024-07-01;2024-07-04;Quality;In Progress;Security;Thomas Berg;Isla Jensen;2024-07-05;
+8;JIR-7050;Source module not triggering BTP events as expected;Low;2024-06-10;2024-06-15;Source;Open;BTP App;Giulia Moretti;Lucas Weber;2024-06-10;
+9;JIR-7051;Finance KPI app not loading on BTP Launchpad;High;2024-06-25;2024-06-30;Finance;Closed;ABAP;Andreas Keller;Sophie Dubois;2024-06-30;2024-06-30
+10;JIR-7052;BTP destination connectivity timeout in Plan module;Medium;2024-05-18;2024-05-21;Plan;In Progress;Security;Katarina Novak;Olivier Blanc;2024-05-21;

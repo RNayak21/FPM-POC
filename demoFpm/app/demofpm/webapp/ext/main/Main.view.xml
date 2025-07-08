@@ -13,7 +13,7 @@
                                 }">
                                 <GenericTile id="_IDGenGenericTile" header="{functionalArea}" press="onTilePress">
                                     <TileContent id="_IDGenTileContent" footer="Manager: {prcoessAreaManager}">
-                                        <NumericContent id="_IDGenNumericContent" value="{totalDefects}" valueColor="Error" />
+                                        <NumericContent id="_IDGenNumericContent" value="{totalDefects}" valueColor="Error"/>
                                     </TileContent>
                                 </GenericTile>
                             </HeaderContainer>
@@ -30,7 +30,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <macros:Table id="Table" metaPath="/JiraEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro" filterBar="FilterBar" header="All Issues" type="GridTable" widthIncludingColumnHeader="true">
+                <macros:Table id="Table" metaPath="/JiraEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro" filterBar="FilterBar" header="{i18n>jiraIssues}" type="GridTable" widthIncludingColumnHeader="true">
                     <macrosTable:Column anchor="DataField::team" placement="After">
                         <macrosTable:Column id="harshika" header="{i18n>Batch}" key="Batch" importance="Low" widthIncludingColumnHeader="true">
                             <Text id="_IDGenText1" text=" Supplement"/>
