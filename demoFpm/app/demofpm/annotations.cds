@@ -19,7 +19,19 @@ annotate service.ProcessAreaEntity with @(
 );
 
 annotate service.JiraEntity with @(
-    Capabilities : {
+    
+    Capabilities          : {
+        NavigationRestrictions: {
+            $Type               : 'Capabilities.NavigationRestrictionsType',
+            RestrictedProperties: [{
+                $Type             : 'Capabilities.NavigationPropertyRestriction',
+                NavigationProperty: DraftAdministrativeData,
+                FilterRestrictions: {
+                    $Type     : 'Capabilities.FilterRestrictionsType',
+                    Filterable: false,
+                },
+            }, ],
+        },
         SearchRestrictions : {
             $Type : 'Capabilities.SearchRestrictionsType',
             Searchable: false
@@ -50,7 +62,15 @@ annotate service.JiraEntity with @(
     // MeasureAttributes:[
     //   { $Type:'UI.ChartMeasureAttributeType', Measure:TotalDefectsAgg, Role:#Axis1 }
     // ]
-  }
+  },
+    UI.Identification : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'demoFpm.EntityContainer/createIncidents',
+            Label : '{i18n>CreateJiraIncident}',
+            Determining : true,
+        },
+    ],
     // UI.Chart #TotalDefectsperUser : {
     //     $Type : 'UI.ChartDefinitionType',
     //     Title : 'DefectsFlow',
@@ -100,18 +120,12 @@ annotate service.JiraEntity with @(
         defectID,
         functionalArea,
         defectStatus,
+        Type,
     ],
     UI.LineItem #tableMacro : [
         {
             $Type : 'UI.DataField',
             Value : defectID,
-            ![@UI.Importance] : #High,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : defectDesc,
-            Label : '{i18n>Description}',
-            ![@UI.Importance] : #High,
         },
         {
             $Type : 'UI.DataField',
@@ -120,31 +134,8 @@ annotate service.JiraEntity with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : defectStatus,
-            Label : '{i18n>Status}',
-            ![@UI.Importance] : #High,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : reporter,
-            Label : '{i18n>Reporter}'
-        },
-        {
-            $Type : 'UI.DataField',
             Value : assignee,
             Label : '{i18n>Assignee}',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : functionalArea,
-            Label : '{i18n>FunctionalArea}',
-            ![@UI.Importance] : #High,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : startDate,
-            Label : 'Start Date',
-            ![@UI.Importance] : #High,
         },
         {
             $Type : 'UI.DataField',
@@ -157,19 +148,35 @@ annotate service.JiraEntity with @(
             Label : '{i18n>UpdatedDate}',
         },
         {
-            $Type : 'UI.DataField',
-            Value : completedDate,
-            Label : 'Completed Date',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : team,
-            Label : 'Resolving Team'
-        },
-        {
             $Type : 'UI.DataFieldForAction',
             Action : 'demoFpm.EntityContainer/createIncidents',
-            Label : 'Create Incident',
+            Label : '{i18n>CreateJiraIncident}',
+        },
+         {
+            $Type : 'UI.DataField',
+            Value : modifiedBy,
+             ![@UI.Hidden] : true
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : createdAt,
+              ![@UI.Hidden] : true
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : createdBy,
+              ![@UI.Hidden] : true
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : ID,
+            Label : 'ID',
+              ![@UI.Hidden] : true
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : modifiedAt,
+              ![@UI.Hidden] : true
         },
     ],
     UI.SelectionPresentationVariant #table : {
@@ -225,11 +232,13 @@ annotate service.JiraEntity with @(
             {
                 $Type : 'UI.DataField',
                 Value : defectID,
+                ![@UI.PartOfPreview] : false
             },
             {
                 $Type : 'UI.DataField',
                 Value : defectStatus,
                 Label : 'Defect Status',
+                ![@UI.PartOfPreview] : false
             },
             {
                 $Type : 'UI.DataField',
@@ -239,11 +248,13 @@ annotate service.JiraEntity with @(
                 $Type : 'UI.DataField',
                 Value : startDate,
                 Label : 'Reported At',
+                ![@UI.PartOfPreview] : false
             },
             {
                 $Type : 'UI.DataField',
                 Value : assignee,
                 Label : 'Assigned To',
+                ![@UI.PartOfPreview] : false
             },
             {
                 $Type : 'UI.DataField',
@@ -254,14 +265,25 @@ annotate service.JiraEntity with @(
                 $Type : 'UI.DataField',
                 Value : reporter,
                 Label : 'Reported By',
+                ![@UI.PartOfPreview] : false
             },
             {
                 $Type : 'UI.DataField',
                 Value : team,
-                Label : 'team',
+                Label : '{i18n>Team}',
+                ![@UI.PartOfPreview] : false
             },
         ],
     },
+
+    Capabilities.FilterRestrictions:{
+        FilterExpressionRestrictions:[
+            {
+                Property:'Type',
+                AllowedExpressions:'SingleValue'
+            }
+        ]
+    }
 );
 
 annotate service.JiraEntity with {
@@ -269,7 +291,7 @@ annotate service.JiraEntity with {
         Common.Label : '{i18n>JiraId}',
         Common.ValueList : {
             $Type : 'Common.ValueListType',
-            CollectionPath : 'JiraEntity',
+            CollectionPath : 'JiraIdVH',
             Parameters : [
                 {
                     $Type : 'Common.ValueListParameterInOut',
@@ -277,7 +299,7 @@ annotate service.JiraEntity with {
                     ValueListProperty : 'defectID',
                 },
             ],
-            Label : 'Defect ID',
+            Label : '{i18n>DefectId}',
         },
         Common.ValueListWithFixedValues : false,
         )
@@ -288,7 +310,7 @@ annotate service.JiraEntity with {
         Common.Label : 'Functional Area',
         Common.ValueList : {
             $Type : 'Common.ValueListType',
-            CollectionPath : 'JiraEntity',
+            CollectionPath : 'FunctionalAreaVH',
             Parameters : [
                 {
                     $Type : 'Common.ValueListParameterInOut',
@@ -296,7 +318,7 @@ annotate service.JiraEntity with {
                     ValueListProperty : 'functionalArea',
                 },
             ],
-            Label : 'Functional Area',
+            Label : '{i18n>FunctionalArea}',
         },
         Common.ValueListWithFixedValues : false,
     )
@@ -314,7 +336,7 @@ annotate service.JiraEntity with {
         Common.Label : '{i18n>Status}',
         Common.ValueList : {
             $Type : 'Common.ValueListType',
-            CollectionPath : 'JiraEntity',
+            CollectionPath : 'DefectStatusVH',
             Parameters : [
                 {
                     $Type : 'Common.ValueListParameterInOut',
@@ -417,31 +439,31 @@ annotate service.ProcessAreaEntity with @(
             Label : 'closedCount',
         },
     ],
-    UI.Chart #defectschart : {
-        $Type : 'UI.ChartDefinitionType',
-        Title : '{i18n>defectschart}',
-        ChartType : #Column,
-        Dimensions : [
-            functionalArea,
-        ],
-        DimensionAttributes : [
-            {
-                $Type : 'UI.ChartDimensionAttributeType',
-                Dimension : functionalArea,
-                Role : #Category,
-            },
-        ],
-        DynamicMeasures : [
-            '@Analytics.AggregatedProperty#TotalDefectsAgg',
-        ],
-        MeasureAttributes : [
-            {
-                $Type : 'UI.ChartMeasureAttributeType',
-                DynamicMeasure : '@Analytics.AggregatedProperty#TotalDefectsAgg',
-                Role : #Axis1,
-            },
-        ],
-    },
+    // UI.Chart #defectschart : {
+    //     $Type : 'UI.ChartDefinitionType',
+    //     Title : '{i18n>defectschart}',
+    //     ChartType : #Column,
+    //     Dimensions : [
+    //         functionalArea,
+    //     ],
+    //     DimensionAttributes : [
+    //         {
+    //             $Type : 'UI.ChartDimensionAttributeType',
+    //             Dimension : functionalArea,
+    //             Role : #Category,
+    //         },
+    //     ],
+    //     DynamicMeasures : [
+    //         '@Analytics.AggregatedProperty#TotalDefectsAgg',
+    //     ],
+    //     MeasureAttributes : [
+    //         {
+    //             $Type : 'UI.ChartMeasureAttributeType',
+    //             DynamicMeasure : '@Analytics.AggregatedProperty#TotalDefectsAgg',
+    //             Role : #Axis1,
+    //         },
+    //     ],
+    // },
     UI.LineItem #tableMacro1 : [
         {
             $Type : 'UI.DataField',
@@ -645,21 +667,6 @@ annotate service.taskEntity with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : priority,
-            Label : 'Priority',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : tags,
-            Label : 'Tags',
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : status,
-            Label : 'Status',
-        },
-        {
-            $Type : 'UI.DataField',
             Value : dueDate,
             Label : 'DueDate',
         },
@@ -702,5 +709,52 @@ annotate service.taskEntity with @(
             Label : 'responsibleTeam',
         },
     ],
+    
 );
+annotate service.TeamTaskCount with @(
+    UI.Chart #defectschart : {
+        $Type : 'UI.ChartDefinitionType',
+        Title : '{i18n>defectschart}',
+        ChartType : #Column,
+        Dimensions : [
+            team,
+        ],
+        DimensionAttributes : [
+            {
+                $Type : 'UI.ChartDimensionAttributeType',
+                Dimension : team,
+                Role : #Category,
+            },
+        ],
+        DynamicMeasures : [
+            '@Analytics.AggregatedProperty#TaskCountsAgg',
+        ],
+        MeasureAttributes : [
+            {
+                $Type : 'UI.ChartMeasureAttributeType',
+                DynamicMeasure : '@Analytics.AggregatedProperty#TaskCountsAgg',
+                Role : #Axis1,
+            },
+        ],
+    },
+);
+
+annotate service.JiraEntity with {
+    Type @(
+        Common.Label : 'Type',
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'TypeVH',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Type,
+                    ValueListProperty : 'Type',
+                },
+            ],
+            Label : '{i18n>Type}',
+        },
+        Common.ValueListWithFixedValues : true,
+    )
+};
 

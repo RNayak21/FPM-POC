@@ -5,6 +5,6 @@
       metaPath="@com.sap.vocabularies.UI.v1.Chart"     
       selectionMode="Single"
     /> -->
-        <macros:Table id="Table1" metaPath="/taskEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro1" header="{i18n&gt;defectAnalytics}"/>
+        <macros:Table id="Table1" metaPath="/taskEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro1" header="All Defects" enableFullScreen="true" readOnly="true" selectionMode="None"/>
     </VBox>
 </core:FragmentDefinition>

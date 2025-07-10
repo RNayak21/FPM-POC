@@ -48,20 +48,24 @@ sap.ui.define(
         let oTableData = oTable.getModel();
         let defectStatus;
 
-        for (let i = 0; i < filters.length; i++) {
-          //subFilterValue = filters[i].aFilters;          
-          if (filters[i].sPath === "defectStatus") {
-            defectStatus = filters[i].oValue1;
+        for (let i = 0; i < filters[0].aFilters.length; i++) {
+          const topFilter = filters[i];
+          const nestedFilter = topFilter?.aFilters?.[0];
+        
+          if (nestedFilter?.sPath === "defectStatus") {
+            defectStatus = nestedFilter.oValue1;
+          } else if (nestedFilter?.aFilters?.[i]?.sPath === "defectStatus") {
+            defectStatus = nestedFilter.aFilters[i].oValue1;
           }
-
-        };
+        }
+        
 
 
         if (defectStatus === "Open" && defectStatus !== "undefined") {
-          await oTable.hideColumns(['Batch', 'Defect Desc', 'Start Date', 'endDate', 'reporter', 'Team', 'Defect ID', 'Defect Status'
+          await oTable.hideColumns(['defectID', 'Defect Desc', 'Start Date', 'endDate', 'reporter', 'Team', 'Defect ID', 'Defect Status'
           ]);
         } else {
-          await oTable.showColumns(['Batch', 'Defect Desc', 'Start Date', 'endDate', 'reporter', 'Team', 'Defect ID', 'Defect Status']);
+          await oTable.showColumns(['defectID', 'Defect Desc', 'Start Date', 'endDate', 'reporter', 'Team', 'Defect ID', 'Defect Status']);
         }
 
 
@@ -79,6 +83,31 @@ sap.ui.define(
         if (oNavContainer) {
           oNavContainer.back();
         }
+      },
+
+      onFilterChange: function(oEvent){
+        let oTable = this.getView().byId("Table");
+        let filters = oEvent.getSource().getFilters().filters[0].aFilters;
+        filters.forEach(filter => {
+            if(filter.sPath ==='Type'){
+              if(filter.oValue1 ==='Bug'){
+                this.getView().byId('JiraDefectTable').setVisible(true);
+                this.getView().byId('JiraBuildTable').setVisible(false);
+                // oTable.getModel().refresh();
+                // oTable.fireBeforeRebindTable();
+                this.getView().byId('demo.com.demofpm::JiraEntityMain--FilterBar-content-btnSearch').firePress();
+              }
+              else{
+                this.getView().byId('JiraDefectTable').setVisible(false);
+                this.getView().byId('JiraBuildTable').setVisible(true);
+                this.getView().byId('demo.com.demofpm::JiraEntityMain--FilterBar-content-btnSearch').firePress();
+              }
+               
+
+            }
+        });
+
+        
       }
     });
   }

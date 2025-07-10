@@ -27,7 +27,6 @@
             >
                 <m:Label
                     id="_IDGenLabel1"
-                    text="Life Cycle sample scrollable"
                 />
             </m:HBox>
            

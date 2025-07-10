@@ -18,6 +18,7 @@ entity jira : cuid, managed {
   priority       : String;
   updatedDate    : Timestamp;
   completedDate  : Timestamp;
+  Type           :String;
 //to_Task       : Association to many task on to_Task.to_Jira = $self;
 }
 
@@ -29,6 +30,20 @@ entity processArea : cuid, managed {
   inProgressCount    : String;
   functionalArea     : String;
   prcoessAreaManager : String;
+  details            : Composition of many processAreaDetails
+                         on details.parent = $self;
+}
+
+entity processAreaDetails : cuid, managed {
+  taskId          : String;
+  title           : String;
+  assignee        : String;
+  status          : String;
+  priority        : String;
+  dueDate         : Date;
+  tags            : String;
+  responsibleTeam : String;
+  parent          : Association to processArea;
 }
 
 entity task : cuid, managed {
@@ -40,4 +55,5 @@ entity task : cuid, managed {
   dueDate         : Date;
   tags            : String;
   responsibleTeam : String;
+  
 }

@@ -4,6 +4,6 @@ ID;totalDefects;openCount;closedCount;excededDueDate;inProgressCount;functionalA
 3;4;4;3;1;2;DELIVERY;David Foster
 4;7;4;3;1;2;LOGISTIC;Carla Reynolds
 5;8;4;3;1;2;FINANCE;John Cook
-6;6;4;3;1;2;Source;Jane Fraser
-7;7;5;2;1;2;Master Data;Jane Fraser
-8;12;5;2;2;2;Quality;Anna King
+6;6;4;3;1;2;SOURCE;Jane Fraser
+7;7;5;2;1;2;MASTER DATA;Jane Fraser
+8;12;5;2;2;2;QUALITY;Anna King

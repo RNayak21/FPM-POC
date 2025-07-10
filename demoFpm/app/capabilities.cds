@@ -2,19 +2,19 @@
 
 using {demoFpm} from '../srv/service';
 
-  annotate my.bookshop.processArea with @(
+  annotate demoFpm.TeamTaskCount with @(
   Aggregation.ApplySupported: {
     Transformations: ['aggregate','groupby'],
-    GroupableProperties: [functionalArea],
+    GroupableProperties: [team],
     AggregatableProperties: [
-      { $Type:'Aggregation.AggregatablePropertyType', Property: totalDefects }
+      { $Type:'Aggregation.AggregatablePropertyType', Property: taskCount }
     ]
   },
-  Analytics.AggregatedProperty #TotalDefectsAgg: {
+  Analytics.AggregatedProperty #TaskCountsAgg: {
     $Type: 'Analytics.AggregatedPropertyType',
-    Name: 'TotalDefectsAgg',
+    Name: 'TaskCountsAgg',
     AggregationMethod: 'sum',  // or 'count' based on your data
-    AggregatableProperty: totalDefects,
+    AggregatableProperty: taskCount,
     ![@Common.Label]: 'Total Defects'
   },
   

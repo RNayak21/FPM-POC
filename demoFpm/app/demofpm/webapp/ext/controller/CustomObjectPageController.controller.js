@@ -36,10 +36,8 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                                         "id": "myButtonId1To14",
                                         "text": "First stage",
                                         "enabled": true,
-                                        "state": "Positive",
-
-                                        "tooltip": "This is the tooltip text for IC_SALE" // Tooltip text
-
+                                        "state": "Critical",
+                                        "tooltip": "This is the tooltip text for JIRA" // Tooltip text
                                     }
                                 }
                             ],
@@ -49,34 +47,14 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                             "texts": [""],
                             "highlighted": false
                         },
-                        {
-                            "id": "14",
-                            "lane": "1",
-                            "title": "Exceeded Due Date",
-                            "titleAbbreviation": "Exceeded Due Date",
-                            "type": "Single",
-                            "children": [
-                                {
-                                    "nodeId": 20,
-                                    "connectionLabel": {
-                                        "id": "myButtonId14To30",
-                                        "text": "Second Stage",
-                                        "enabled": true,
-                                        "state": "Positive"
-                                    }
-                                }
-                            ],
-                            "stateText": "Plant_101",
-                            "focused": false,
-                            "texts": ["text 1", "text 2"],
-                            "highlighted": false
-                        },
+
                         {
                             "id": "20",
                             "lane": "2",
-                            "title": "Inprogress",
-                            "titleAbbreviation": "Inprogress",
+                            "title": "Exceeded Due Date",
+                            "titleAbbreviation": "Exceeded Due Date",
                             "type": "Single",
+                            "state": "Negative",
                             "children": [
                                 {
                                     "nodeId": 30,
@@ -90,10 +68,25 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                                     }
                                 }
                             ],
-                            "stateText": "Open Jira",
-                            "focused": true,
-                            "texts": null,
-                            "highlighted": false
+                        },
+                        {
+                            "id": "14",
+                            "lane": "1",
+                            "title": "In Progress",
+                            "titleAbbreviation": "In Progress",
+                            "type": "Single",
+                            "state": "Neutral",
+                            "children": [
+                                {
+                                    "nodeId": 20,
+                                    "connectionLabel": {
+                                        "id": "myButtonId14To30",
+                                        "text": "Second Stage",
+                                        "enabled": true,
+                                        "state": "Positive"
+                                    }
+                                }
+                            ],
                         },
                         {
                             "id": "30",
@@ -112,20 +105,20 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                     "lanes": [
                         {
                             "id": "0",
-                            "icon": "sap-icon://factory",
+                            "icon": "sap-icon://learning-assistant",
                             "label": "Open",
                             "position": 0,
                             "state": [
                                 {
-                                    "state": "Positive",
+                                    "state": "Critical",
                                     "value": 10
                                 }
                             ]
                         },
                         {
                             "id": "1",
-                            "icon": "sap-icon://building",
-                            "label": "Exceeded Due Date",
+                            "icon": "sap-icon://workflow-tasks",
+                            "label": "In Progress",
                             "position": 1,
                             "state": [
                                 {
@@ -136,8 +129,8 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                         },
                         {
                             "id": "2",
-                            "icon": "sap-icon://building",
-                            "label": "In Progress",
+                            "icon": "sap-icon://status-critical",
+                            "label": "Exceeded Due Date",
                             "position": 2,
                             "state": [
                                 {
@@ -148,7 +141,7 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                         },
                         {
                             "id": "3",
-                            "icon": "sap-icon://factory",
+                            "icon": "sap-icon://complete",
                             "label": "Closed",
                             "position": 3,
                             "state": [
@@ -160,13 +153,22 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                         }
                     ]
                 };
+ 
 
                 // Set up the model
                 let oModel3 = new JSONModel(da3);
                 this.getView().setModel(oModel3, "data3");
+                //const formElements = this.base.byId("demo.com.demofpm::JiraEntityObjectPage--fe::FormContainer::Information").mAggregations.formElements;
+                // formElements.forEach(element => {
+                //     let sId = element.sId;
+                //     if(sId.includes("defectDesc"||"completedDate"||"team"||"functionalArea"||"startDate")){
+                //         element.destroy(true);
+                //     }
+                // });
             },
 
             onAfterRendering: function () {
+                const formElements = this.base.byId("demo.com.demofpm::JiraEntityObjectPage--fe::FormContainer::Information").mAggregations.formElements;
                 const oProcessFlow = this.getView().byId("processflow4");
 
                 if (oProcessFlow) {
@@ -180,11 +182,11 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
             },
             _loadChartData: function () {
                 const oODataModel = this.getView().getModel(); // OData v4 model
-                const sApply = "$apply=groupby((functionalArea),aggregate(totalDefects with sum as TotalDefectsAgg))";
-
-                oODataModel.read("/processArea", {
+                const sApply = "$apply=groupby((team),aggregate(taskCount with sum as TaskCountsAgg))";
+ 
+                oODataModel.read("/TeamTaskCount", {
                     urlParameters: {
-                        $apply: "groupby((functionalArea),aggregate(totalDefects with sum as TotalDefectsAgg))"
+                        $apply: "groupby((team),aggregate(taskCount with sum as TaskCountsAgg))"
                     },
                     success: (oData) => {
                         // oData.value contains aggregated chart data

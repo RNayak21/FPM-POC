@@ -4,6 +4,6 @@
         <!-- <macros:Chart id="Chart" metaPath="@com.sap.vocabularies.UI.v1.Chart#TotalDefectsperUser" contextPath="/JiraEntity" selectionMode="Single" selectionChange="handler.onChartSelectionChange" personalization="Type,Item,Sort"/> -->
         <!-- <macros:Chart id="DefectsChart" metaPath="@com.sap.vocabularies.UI.v1.Chart##DefectsChart" contextPath="/ProcessAreaEntity" personalization="Type,Item,Sort" selectionMode="Single" selectionChange="handler.onChartSelect"/>  -->
         
-        <macros:Chart id="Chart" metaPath="@com.sap.vocabularies.UI.v1.Chart#defectschart" contextPath="/ProcessAreaEntity" personalization="Type,Item,Sort" selectionMode="Single" selectionChange="onChartSelect"/>
+        <macros:Chart id="Chart" metaPath="@com.sap.vocabularies.UI.v1.Chart#defectschart" contextPath="/TeamTaskCount" personalization="Type,Item,Sort" selectionMode="Single" selectionChange="onChartSelect"/>
     </VBox>
 </core:FragmentDefinition>
