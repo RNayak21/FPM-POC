@@ -1,25 +1,16 @@
-
-
-
-
-
 <core:FragmentDefinition
     xmlns:core="sap.ui.core"
     xmlns:m="sap.m"
     xmlns:suite="sap.suite.ui.commons"
     xmlns:macros="sap.fe.macros"
  >
-   
- 
     <m:VBox
         id="_IDGenVBox2"
         core:require="{ handler: 'demo/com/demofpm/ext/fragment/LifeCycle'}"
      >
        
  
-        <m:Panel id="_IDGenPanel4">
-            <!-- <m:Button id="_IDGenButton3" text="Show End to End Flow" press="onZoomInS" /> -->
-         
+        <m:Panel id="_IDGenPanel4">         
  
             <m:HBox
                 id="_IDGenHBox1"

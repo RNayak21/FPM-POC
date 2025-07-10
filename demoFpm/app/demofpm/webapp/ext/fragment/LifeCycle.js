@@ -14,18 +14,15 @@ sap.ui.define([
     'sap/m/ResponsivePopover',
     'sap/ui/core/Core',
     'sap/ui/core/Element'
-  ], function (
+], function (
     jQuery, SuiteLibrary, MobileLibrary, JSONModel, Device,
     MessageToast, ProcessFlowConnectionLabel, StandardListItem,
     Button, List, ResponsivePopover, Core, Element
-  ) {
+) {
     'use strict';
     var aConnections = null;
     var sContainerId = "";
     function createListEntryObject(oConnection) {
-  
-  
-      
         return {
             title: oConnection.label.getText(),
             // info: oConnection.sourceNode.getNodeId() + "-" + oConnection.targetNode.getNodeId(),
@@ -36,10 +33,10 @@ sap.ui.define([
         var aNavigation = aConnections.map(createListEntryObject);
         return { navigation: aNavigation };
     }
-  
-  
-  
-    
+
+
+
+
     // 🔹 Define the handler object first
     var ProcessFlowHandler = {
         onLabelPress: function (oEvent) {
@@ -58,20 +55,6 @@ sap.ui.define([
             oList.setModel(new JSONModel(oListData));
             oList.bindAggregation("items", "/navigation", oItemTemplate);
             var oResponsivePopover;
-            // var oBeginButton = new Button({
-            //     text: "Action1",
-            //     type: MobileLibrary.ButtonType.Reject,
-            //     press: function () {
-            //         oResponsivePopover.setShowCloseButton(true);
-            //     }
-            // });
-            // var oEndButton = new Button({
-            //     text: "Action2",
-            //     type: MobileLibrary.ButtonType.Accept,
-            //     press: function () {
-            //         oResponsivePopover.setShowCloseButton(true);
-            //     }
-            // });
             oResponsivePopover = Element.getElementById("__popover") || new ResponsivePopover("__popover", {
                 placement: MobileLibrary.PlacementType.Auto,
                 // title: "Paths[" + aConnections.length + "]",
@@ -90,41 +73,15 @@ sap.ui.define([
             oResponsivePopover.openBy(oSelectedLabel);
             oResponsivePopover.setShowCloseButton(true);
         },
-        // onChange: function (oEvent) {
-        //     var oSelect = oEvent.getSource();
-        //      // Get the selected key
-        //      var sSelectedKey = oSelect.getSelectedKey();
-        //     if(sSelectedKey === "PO"){
-        //      this.getView().byId("zbuvcm47419ui::PFC_ListObjectPage--fe::CustomSubSection::ProcessFlow--productTable-listUl").setVisible(true);
-        //      this.getView().byId("zbuvcm47419ui::PFC_ListObjectPage--fe::CustomSubSection::ProcessFlow--productTable1-listUl").setVisible(false);
-        //     }else if (sSelectedKey === "SO")
-        //      {
-        //       this.getView().byId("zbuvcm47419ui::PFC_ListObjectPage--fe::CustomSubSection::ProcessFlow--productTable-listUl").setVisible(false);
-        //         this.getView().byId("zbuvcm47419ui::PFC_ListObjectPage--fe::CustomSubSection::ProcessFlow--productTable1-listUl").setVisible(true);
-        //      }
-        //     // MessageToast.show("change event fired! \n Selected Item id: " + oEvent.getParameters().selectedItem.sId
-        //     // + "\n Previously Selected Item id: " + oEvent.getParameters().previousSelectedItem.sId);
-        // },
-        onNodePress: function(event) {
-            console.log(event.getParameters(),"event.getParameters()")
-      MessageToast.show(event.getParameters()?.mProperties?.title);
-    },
-        // onChange: function (oEvent) {
-        //     var oSelect = oEvent.getSource();
-        //     var sSelectedKey = oSelect.getSelectedKey();
-        //      var oPO = Element.getElementById("zbuvcm47419ui::PFC_ListObjectPage--fe::CustomSubSection::ProcessFlow--productTable");
-        //      var oSO = Element.getElementById("zbuvcm47419ui::PFC_ListObjectPage--fe::CustomSubSection::ProcessFlow--productTable1");
-        //     if (sSelectedKey === "PO") {
-        //         oPO.setVisible(true);
-        //         oSO.setVisible(false);
-        //     } else if (sSelectedKey === "SO") {
-        //         oPO.setVisible(false);
-        //         oSO.setVisible(true);
-        //     }
-        // },
-        formatConnectionLabels: function(childrenData) {
+
+        onNodePress: function (event) {
+            console.log(event.getParameters(), "event.getParameters()")
+            MessageToast.show(event.getParameters()?.mProperties?.title);
+        },
+
+        formatConnectionLabels: function (childrenData) {
             var aChildren = [];
-            for (var i = 0; childrenData &&  i < childrenData.length; i++) {
+            for (var i = 0; childrenData && i < childrenData.length; i++) {
                 if (childrenData[i].connectionLabel && childrenData[i].connectionLabel.id) {
                     var oConnectionLabel = Element.getElementById(childrenData[i].connectionLabel.id);
                     if (!oConnectionLabel) {
@@ -141,7 +98,7 @@ sap.ui.define([
                         nodeId: childrenData[i].nodeId,
                         connectionLabel: oConnectionLabel
                     });
-                } else if (jQuery.type(childrenData[i]) === 'number'){
+                } else if (jQuery.type(childrenData[i]) === 'number') {
                     aChildren.push(childrenData[i]);
                 }
             }
@@ -162,6 +119,5 @@ sap.ui.define([
             });
         }
     };
-    // ✅ Export the named object
     return ProcessFlowHandler;
-  });
+});

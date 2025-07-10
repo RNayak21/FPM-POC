@@ -22,6 +22,7 @@ sap.ui.define(["sap/ui/model/Filter",
                 let oTable = that.getView().byId("Table");
                 if (filter === '0' && filter !== "undefined") {
                     await oTable.hideColumns(['defectDesc', 'functionalArea', 'startDate', 'completedDate', 'reporter', 'team','defectStatus']);
+                    
                 } else {
                     await oTable.showColumns(['defectDesc', 'functionalArea', 'startDate', 'completedDate', 'reporter', 'team','defectStatus']);
                 }

@@ -72,18 +72,6 @@
                     
             </f:content>
         </f:DynamicPage>
-        <Page id="detailPage" title="Detail Page" showNavButton="true" navButtonPress="onNavBack">
-            <content>
-                <VBox class="sapUiSmallMargin">
-                    <Text text="Total Defects: {totalDefects}"/>
-                    <Text text="Open Count: {openCount}"/>
-                    <Text text="Closed Count: {closedCount}"/>
-                    <Text text="Exceded Due Date: {excededDueDate}"/>
-                    <Text text="In Progress Count: {inProgressCount}"/>
-                    <Text text="Functional Area: {functionalArea}"/>
-                    <Text text="Prcoess Area Manager : {prcoessAreaManager}"/>
-                </VBox>
-            </content>
-        </Page>
+        
     </NavContainer>
 </mvc:View>

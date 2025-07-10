@@ -1,5 +1,7 @@
 using demoFpm as service from '../../srv/service';
 using from '../capabilities';
+using from '../../db/schema';
+
 
 annotate service.ProcessAreaEntity with @(
  Capabilities :{
@@ -120,6 +122,7 @@ annotate service.JiraEntity with @(
         defectID,
         functionalArea,
         defectStatus,
+        priority.name,
         Type,
     ],
     UI.LineItem #tableMacro : [
@@ -129,8 +132,9 @@ annotate service.JiraEntity with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : priority,
+            Value : priority.name,
             Label : '{i18n>Priority}',
+            Criticality : priority.criticality,
         },
         {
             $Type : 'UI.DataField',
@@ -753,6 +757,32 @@ annotate service.JiraEntity with {
                 },
             ],
             Label : '{i18n>Type}',
+        },
+        Common.ValueListWithFixedValues : true,
+    )
+};
+
+annotate service.JiraEntity with {
+    priority @(
+        Common.Label : '{i18n>Priority}',
+        Common.Text : priority.name,
+    )
+};
+
+annotate service.priority with {
+    name @(
+        Common.Label : '{i18n>Priority}',
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'priority',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : name,
+                    ValueListProperty : 'name',
+                },
+            ],
+            Label : '{i18n>Priority}',
         },
         Common.ValueListWithFixedValues : true,
     )

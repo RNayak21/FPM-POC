@@ -17,28 +17,36 @@ service demoFpm {
                 functionalArea     : String,
                 prcoessAreaManager : String
         };
-    entity JiraIdVH as projection on JiraEntity {
-        key defectID
-    }
 
-    view FunctionalAreaVH as select from JiraEntity distinct {
-        key functionalArea
-    }
+    entity JiraIdVH          as
+        projection on JiraEntity {
+            key defectID
+        }
+
+    view FunctionalAreaVH as
+        select from JiraEntity distinct {
+            key functionalArea
+        }
+
+    
 
     view TeamTaskCount as
-        select from taskEntity{
+        select from taskEntity {
             key responsibleTeam as team,
-            count( * )      as taskCount :String
+                count( * )      as taskCount : String
         }
         group by
             responsibleTeam;
 
-    view DefectStatusVH as select from JiraEntity distinct {
+    view DefectStatusVH as
+        select from JiraEntity distinct {
             key defectStatus
-    }
-    view TypeVH as select from JiraEntity distinct {
+        }
+
+    view TypeVH as
+        select from JiraEntity distinct {
             key Type
-    }
+        }
 
     action createIncidents(Defect_ID : String  @mandatory  @Common: {Label: 'Defect ID'},
                            Defect_Desc : String  @mandatory  @Common: {Label: 'Defect Description'},
@@ -46,5 +54,5 @@ service demoFpm {
                            Due_Date : Timestamp  @mandatory  @Common: {Label: 'Due Date'},
                            Assign_To : String  @mandatory  @Common: {Label: 'Assign To'},
                            Resolving_Team : String  @mandatory  @Common: {Label: 'Resolving Team'},
-                            priority : String  @mandatory  @Common: {Label: 'Priority'}  ) returns String;
+                           priority : String  @mandatory  @Common: {Label: 'Priority'}  ) returns String;
 }

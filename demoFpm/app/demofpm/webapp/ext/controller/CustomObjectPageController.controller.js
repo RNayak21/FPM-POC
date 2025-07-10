@@ -17,9 +17,6 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                     }
                 );
                 
-                // you can access the Fiori elements extensionAPI via this.base.getExtensionAPI
-                //
-                // var oModel = this.base.getExtensionAPI().getModel();
                 let da3 = {
                     "nodes": [
                         {
@@ -158,17 +155,10 @@ sap.ui.define(['sap/ui/core/mvc/ControllerExtension', 'sap/ui/model/json/JSONMod
                 // Set up the model
                 let oModel3 = new JSONModel(da3);
                 this.getView().setModel(oModel3, "data3");
-                //const formElements = this.base.byId("demo.com.demofpm::JiraEntityObjectPage--fe::FormContainer::Information").mAggregations.formElements;
-                // formElements.forEach(element => {
-                //     let sId = element.sId;
-                //     if(sId.includes("defectDesc"||"completedDate"||"team"||"functionalArea"||"startDate")){
-                //         element.destroy(true);
-                //     }
-                // });
+               
             },
 
             onAfterRendering: function () {
-                const formElements = this.base.byId("demo.com.demofpm::JiraEntityObjectPage--fe::FormContainer::Information").mAggregations.formElements;
                 const oProcessFlow = this.getView().byId("processflow4");
 
                 if (oProcessFlow) {
