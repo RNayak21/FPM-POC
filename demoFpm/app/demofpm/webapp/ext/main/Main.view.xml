@@ -38,40 +38,37 @@
             <f:content>
                 <VBox>
                     <FlexBox id="JiraDefectTable" visible="true">
-                        <macros:Table id="Table" metaPath="/JiraEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro" filterBar="FilterBar" header="{i18n>jiraIssues}" type="GridTable" widthIncludingColumnHeader="true" enableAutoColumnWidth="true">
-                        <macros:columns>
-                        <macrosTable:Column id="defectDesColumn" header="{i18n>description}" key="defectDesc" importance="Low" width="30rem" widthIncludingColumnHeader="true" placement="After" anchor="DataField::defectID">
-                            <Text id="_IDGenText1" text="{defectDesc}"/>
-                        </macrosTable:Column>
-                        <macrosTable:Column id="functionalAreaColumn" header="{i18n>FunctionalArea}" key="functionalArea" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="DataField::assignee">
-                            <Text id="_IDGenText2" text="{functionalArea}"/>
-                        </macrosTable:Column>
-                        <macrosTable:Column id="reporterColumn" header="{i18n>Reporter}" key="reporter" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="defectStatus">
-                            <Text id="_IDGenText7" text="{reporter}"/>
-                        </macrosTable:Column>
-                        <macrosTable:Column id="defectStatusColumn" header="{i18n>Status}" key="defectStatus" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="DataField::priority">
-                            <Text id="_IDGenText6" text="{defectStatus}"/>
-                        </macrosTable:Column>
-                        <macrosTable:Column id="StartDateColumn" header="{i18n>StartDate}" key="startDate" importance="Low" width="15rem" widthIncludingColumnHeader="true" placement="After" anchor="functionalArea">
-                            <Text id="_IDGenText3" text="{startDate}"/>
-                        </macrosTable:Column>
-                        <macrosTable:Column id="completedDateColumn" header="{i18n>CompletedDate}" key="completedDate" importance="Low" width="15rem" widthIncludingColumnHeader="true" placement="After" anchor="DataField::updatedDate">
-                            <Text id="_IDGenText4" text="{completedDate}"/>
-                        </macrosTable:Column>
-                        <macrosTable:Column id="teamColumn" header="{i18n>ResolvingTeam}" key="team" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="completedDate">
-                            <Text id="_IDGenText5" text="{team}"/>
-                        </macrosTable:Column>
-                    </macros:columns>
-                </macros:Table>
+                        <macros:Table id="Table" metaPath="/JiraEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro" filterBar="FilterBar" header="{i18n>jiraIssues}" type="GridTable" widthIncludingColumnHeader="true" enableAutoColumnWidth="true" isSearchable="true">
+                            <macros:columns>
+                                <macrosTable:Column id="defectDesColumn" header="{i18n>description}" key="defectDesc" importance="Low" width="30rem" widthIncludingColumnHeader="true" placement="After" anchor="DataField::defectID">
+                                    <Text id="_IDGenText1" text="{defectDesc}"/>
+                                </macrosTable:Column>
+                                <macrosTable:Column id="functionalAreaColumn" header="{i18n>FunctionalArea}" key="functionalArea" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="DataField::assignee">
+                                    <Text id="_IDGenText2" text="{functionalArea}"/>
+                                </macrosTable:Column>
+                                <macrosTable:Column id="reporterColumn" header="{i18n>Reporter}" key="reporter" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="defectStatus">
+                                    <Text id="_IDGenText7" text="{reporter}"/>
+                                </macrosTable:Column>
+                                <macrosTable:Column id="defectStatusColumn" header="{i18n>Status}" key="defectStatus" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="DataField::priority">
+                                    <Text id="_IDGenText6" text="{defectStatus}"/>
+                                </macrosTable:Column>
+                                <macrosTable:Column id="StartDateColumn" header="{i18n>StartDate}" key="startDate" importance="Low" width="15rem" widthIncludingColumnHeader="true" placement="After" anchor="functionalArea">
+                                    <Text id="_IDGenText3" text="{startDate}"/>
+                                </macrosTable:Column>
+                                <macrosTable:Column id="completedDateColumn" header="{i18n>CompletedDate}" key="completedDate" importance="Low" width="15rem" widthIncludingColumnHeader="true" placement="After" anchor="DataField::updatedDate">
+                                    <Text id="_IDGenText4" text="{completedDate}"/>
+                                </macrosTable:Column>
+                                <macrosTable:Column id="teamColumn" header="{i18n>ResolvingTeam}" key="team" importance="Low" widthIncludingColumnHeader="true" placement="After" anchor="completedDate">
+                                    <Text id="_IDGenText5" text="{team}"/>
+                                </macrosTable:Column>
+                            </macros:columns>
+                        </macros:Table>
                     </FlexBox>
                     <FlexBox id="JiraBuildTable" visible="false">
-                         <macros:Table id="Table2" type="GridTable" metaPath="/taskEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro1" filterBar="FilterBar" header="JIRA Build" enableFullScreen="true" readOnly="true" selectionMode="None"/>
+                        <macros:Table id="Table2" type="GridTable" metaPath="/taskEntity/@com.sap.vocabularies.UI.v1.LineItem#tableMacro1" filterBar="FilterBar" header="JIRA Build" enableFullScreen="true" readOnly="true" selectionMode="None"/>
                     </FlexBox>
                 </VBox>
-               
-                    
             </f:content>
         </f:DynamicPage>
-        
     </NavContainer>
 </mvc:View>

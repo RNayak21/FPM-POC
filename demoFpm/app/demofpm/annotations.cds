@@ -60,10 +60,6 @@ annotate service.JiraEntity with @(
     DimensionAttributes:[
       { $Type:'UI.ChartDimensionAttributeType', Dimension:functionalArea, Role:#Category }
     ],
-    // Measures:[ TotalDefectsAgg ],
-    // MeasureAttributes:[
-    //   { $Type:'UI.ChartMeasureAttributeType', Measure:TotalDefectsAgg, Role:#Axis1 }
-    // ]
   },
     UI.Identification : [
         {
@@ -73,48 +69,6 @@ annotate service.JiraEntity with @(
             Determining : true,
         },
     ],
-    // UI.Chart #TotalDefectsperUser : {
-    //     $Type : 'UI.ChartDefinitionType',
-    //     Title : 'DefectsFlow',
-    //     ChartType : #Column,
-    //     Dimensions : [
-    //         defectID,
-    //         userId,
-    //     ],
-    //     DimensionAttributes : [
-    //         {
-    //             $Type : 'UI.ChartDimensionAttributeType',
-    //             Dimension : defectID,
-    //             Role : #Category,
-    //         },
-    //         {
-    //             $Type : 'UI.ChartDimensionAttributeType',
-    //             Dimension : userId,
-    //             Role : #Series,
-    //         },
-    //     ],
-    //     // DynamicMeasures : [
-    //     //     '',
-    //     // ],
-    //     // MeasureAttributes : [
-    //     //     {
-    //     //         $Type : 'UI.ChartMeasureAttributeType',
-    //     //         DynamicMeasure : '',
-    //     //         Role : #Axis1,
-    //     //     },
-    //     // ],
-
-    //      Measures : [
-    //         defectID,
-    //     ],
-    //     MeasureAttributes : [
-    //         {
-    //             $Type : 'UI.ChartMeasureAttributeType',
-    //             Measure : defectID,
-    //             Role : #Axis1,
-    //         },
-    //     ],
-    // },
 );
 
 annotate service.JiraEntity with @(
@@ -276,6 +230,11 @@ annotate service.JiraEntity with @(
                 Value : team,
                 Label : '{i18n>Team}',
                 ![@UI.PartOfPreview] : false
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : comment,
+                Label : 'Comment',
             },
         ],
     },
@@ -443,31 +402,6 @@ annotate service.ProcessAreaEntity with @(
             Label : 'closedCount',
         },
     ],
-    // UI.Chart #defectschart : {
-    //     $Type : 'UI.ChartDefinitionType',
-    //     Title : '{i18n>defectschart}',
-    //     ChartType : #Column,
-    //     Dimensions : [
-    //         functionalArea,
-    //     ],
-    //     DimensionAttributes : [
-    //         {
-    //             $Type : 'UI.ChartDimensionAttributeType',
-    //             Dimension : functionalArea,
-    //             Role : #Category,
-    //         },
-    //     ],
-    //     DynamicMeasures : [
-    //         '@Analytics.AggregatedProperty#TotalDefectsAgg',
-    //     ],
-    //     MeasureAttributes : [
-    //         {
-    //             $Type : 'UI.ChartMeasureAttributeType',
-    //             DynamicMeasure : '@Analytics.AggregatedProperty#TotalDefectsAgg',
-    //             Role : #Axis1,
-    //         },
-    //     ],
-    // },
     UI.LineItem #tableMacro1 : [
         {
             $Type : 'UI.DataField',
@@ -542,46 +476,6 @@ annotate service.ProcessAreaEntity with @(
             Label : 'functionalArea',
         },
     ],
-    // UI.Chart #totalDefects : {
-    //     $Type : 'UI.ChartDefinitionType',
-    //     Title : '{i18n>Defectschart}',
-    //     ChartType : #Column,
-    //     Dimensions : [
-    //         functionalArea,
-    //     ],
-    //     DimensionAttributes : [
-    //         {
-    //             $Type : 'UI.ChartDimensionAttributeType',
-    //             Dimension : functionalArea,
-    //             Role : #Category,
-    //         },
-    //     ],
-    //    Measures:[ totalDefects ],
-    // MeasureAttributes:[
-    //   { $Type:'UI.ChartMeasureAttributeType', Measure:totalDefects, Role:#Axis1 }
-//     // ]
-  
-
-
-//   UI.Chart #DefectsChart: {
-//     $Type: 'UI.ChartDefinitionType',
-//      Title : '{i18n>Defectschart}',
-//     ChartType: #Column,
-//     Dimensions: [functionalArea],
-//     //DynamicMeasures: [ '@Analytics.AggregatedProperty#TotalDefectsAgg' ],
-//     DimensionAttributes: [
-//       { $Type:'UI.ChartDimensionAttributeType', Dimension:functionalArea, Role:#Category }
-//     ],
-//     MeasureAttributes: [
-//       {
-//         $Type:'UI.ChartMeasureAttributeType',
-//         Measure:totalDefects,
-//         //DynamicMeasure: '@Analytics.AggregatedProperty#TotalDefectsAgg',
-//         Role: #Axis1
-//       }
-//     ]
-//   }
-    
 );
 
 annotate service.ProcessAreaEntity with @(

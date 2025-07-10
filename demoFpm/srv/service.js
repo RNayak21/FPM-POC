@@ -6,6 +6,26 @@ module.exports = async (srv) => {
   srv.on("createIncidents", async (req) => {
     try {
       let data = req.data;
+      let oPrioirty;
+      if (data.priority == 'High') {
+        oPrioirty = {
+          code: 'H',
+          name: data.priority,
+          criticality: 1
+        };
+      } else if (data.priority == 'Low') {
+        oPrioirty = {
+          code: 'L',
+          name: data.priority,
+          criticality: 3
+        };
+      } else if (data.priority == 'Medium') {
+        oPrioirty = {
+          code: 'M',
+          name: data.priority,
+          criticality: 2
+        };
+      }
       let obj = {
         defectID: data.Defect_ID,
         defectDesc: data.Defect_Desc,
@@ -16,7 +36,7 @@ module.exports = async (srv) => {
         team: data.Resolving_Team,
         assignee: data.Assign_To,
         reporter: "XYZ",
-        priority: data.priority
+        priority: oPrioirty
       }
       await cds.run(INSERT.into(jira).entries(obj));
       return {
@@ -27,25 +47,5 @@ module.exports = async (srv) => {
       return req.reject(500, error.message);
     }
   });
-
-  // srv.on('READ',"JiraEntity", async(req)=>{
-  //   const columnsToRemove = ['completedDate', 'defectDesc'];
-  //   console.log("Before JiraEntitycolumns---->",req.query.columns().SELECT.columns);
-
-  //   req.query.SELECT.columns = req.query.SELECT.columns.filter(col => {
-  //     return !(col.ref && columnsToRemove.includes(col.ref[0]));
-  //   });
-  //   let response = await cds.run(req.query);
-
-  //   console.log("After JiraEntitycolumns---->",req.query.columns().SELECT.columns);
-
-  //   // console.log("JiraEntity---->",req.query);
-  //   // console.log("JiraEntitycolumns---->",req.query.columns().SELECT.columns);
-  //   // console.log("JiraEntityrows---->",req.query.rows);
-  //   //console.log("JiraEntity Response---->",response)
-  //   return response;
-  // });
-  
-
 
 }

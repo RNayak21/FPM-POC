@@ -1,4 +1,4 @@
-ID;defectID;defectDesc;priority_code;startDate;endDate;functionalArea;defectStatus;team;assignee;reporter;updatedDate;completedDate;type
+ID;defectID;defectDesc;priority_code;startDate;endDate;functionalArea;defectStatus;team;assignee;reporter;updatedDate;completedDate;type;comment
 1;JIR-7042;BTP App fails to render custom Fiori tiles;H;2024-06-02;2024-06-21;MAKE;Open;BTP App;Lars Mueller;Anna Novak;;;Bug
 2;JIR-7043;CPI integration with S/4HANA fails on token exchange;M;2024-06-01;2024-06-03;Plan;Closed;BTP CPI;Sofia Martins;Rajesh Patel;2024-06-03;2024-06-03;Bug
 3;JIR-7046;Finance data not syncing via BTP destinations;H;2023-08-06;2023-08-07;Finance;In Progress;ABAP;Johan Eriksson;Clara Dupont;2023-08-07;;Bug
