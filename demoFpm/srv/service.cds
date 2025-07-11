@@ -46,6 +46,9 @@ service demoFpm {
         @Core.MediaType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         excel : LargeBinary;
     };
+
+    
+  
  
 
     action createIncidents(Defect_ID : String  @mandatory  @Common: {Label: 'Defect ID'},
@@ -55,4 +58,52 @@ service demoFpm {
                            Assign_To : String  @mandatory  @Common: {Label: 'Assign To'},
                            Resolving_Team : String  @mandatory  @Common: {Label: 'Resolving Team'},
                            priority : String  @mandatory  @Common: {Label: 'Priority'}  ) returns String;
+
+    function getProcessFlowData() returns ProcessFlowData;
+ 
+   
+    type ConnectionLabel {
+        id      : String;
+        text    : String;
+        enabled : Boolean;
+        state   : String;
+        tooltip : String;
+    }
+ 
+    type Child {
+        nodeId          : Integer;
+        connectionLabel : ConnectionLabel;
+    }
+ 
+    type Node {
+        id                : String;
+        lane              : String;
+        title             : String;
+        titleAbbreviation : String;
+        type              : String;
+        state             : String;
+        stateText         : String;
+        focused           : Boolean;
+        texts             : many String;
+        highlighted       : Boolean;
+        children          : many Child;
+    }
+ 
+    type StateInfo {
+        state : String;
+        value : Integer;
+    }
+ 
+    type Lane {
+        id       : String;
+        icon     : String;
+        label    : String;
+        position : Integer;
+        state    : many StateInfo;
+    }
+ 
+    type ProcessFlowData {
+        nodes : many Node;
+        lanes : many Lane;
+    }
 }
