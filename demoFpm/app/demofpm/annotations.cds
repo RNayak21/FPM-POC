@@ -231,11 +231,6 @@ annotate service.JiraEntity with @(
                 Label : '{i18n>Team}',
                 ![@UI.PartOfPreview] : false
             },
-            {
-                $Type : 'UI.DataField',
-                Value : comment,
-                Label : 'Comment',
-            },
         ],
     },
 
@@ -681,4 +676,45 @@ annotate service.priority with {
         Common.ValueListWithFixedValues : true,
     )
 };
+
+annotate service.ProcessAreaDetailsEntity with @(
+    UI.LineItem #tableMacro : [
+        {
+            $Type : 'UI.DataField',
+            Value : taskId,
+            Label : '{i18n>JiraId}',
+            @UI.Importance : #High,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : title,
+            Label : 'Defect Description',
+            @UI.Importance : #High,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : responsibleTeam,
+            Label : 'Responsible Team',
+            @UI.Importance : #High,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : status,
+            Label : 'Status',
+            @UI.Importance : #High,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : dueDate,
+            Label : 'Due Date',
+            @UI.Importance : #High,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : assignee,
+            Label : 'Assigned To',
+            @UI.Importance : #High,
+        },
+    ]
+);
 

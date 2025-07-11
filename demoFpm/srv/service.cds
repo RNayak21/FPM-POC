@@ -1,22 +1,14 @@
 using my.bookshop as my from '../db/schema';
 
+
 service demoFpm {
     @odata.draft.enabled
     entity JiraEntity        as projection on my.jira;
 
     entity taskEntity        as projection on my.task;
 
-    entity ProcessAreaEntity as
-        projection on my.processArea {
-            key ID                 : String,
-                totalDefects       : String,
-                openCount          : String,
-                closedCount        : String,
-                excededDueDate     : String,
-                inProgressCount    : String,
-                functionalArea     : String,
-                prcoessAreaManager : String
-        };
+     entity ProcessAreaEntity        as projection on my.processArea;
+    entity ProcessAreaDetailsEntity as projection on my.processAreaDetails;
 
     entity JiraIdVH          as
         projection on JiraEntity {
@@ -47,6 +39,14 @@ service demoFpm {
         select from JiraEntity distinct {
             key Type
         }
+
+    @cds.persistence.skip
+    @odata.singleton
+    entity JiraExcelUpload {
+        @Core.MediaType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        excel : LargeBinary;
+    };
+ 
 
     action createIncidents(Defect_ID : String  @mandatory  @Common: {Label: 'Defect ID'},
                            Defect_Desc : String  @mandatory  @Common: {Label: 'Defect Description'},

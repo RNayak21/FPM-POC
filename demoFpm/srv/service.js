@@ -1,4 +1,8 @@
 const cds = require('@sap/cds');
+const { v4: uuidv4 } = require('uuid');
+const dbOps = require('./operations/dbOps')
+const excelOps = require('./operations/excelOps')
+const util = require('./utils/util')
 
 
 module.exports = async (srv) => {
@@ -6,27 +10,9 @@ module.exports = async (srv) => {
   srv.on("createIncidents", async (req) => {
     try {
       let data = req.data;
-      let oPrioirty;
-      if (data.priority == 'High') {
-        oPrioirty = {
-          code: 'H',
-          name: data.priority,
-          criticality: 1
-        };
-      } else if (data.priority == 'Low') {
-        oPrioirty = {
-          code: 'L',
-          name: data.priority,
-          criticality: 3
-        };
-      } else if (data.priority == 'Medium') {
-        oPrioirty = {
-          code: 'M',
-          name: data.priority,
-          criticality: 2
-        };
-      }
+      let oPrioirty = util.getPriority(data.priority);
       let obj = {
+        ID : uuidv4(),
         defectID: data.Defect_ID,
         defectDesc: data.Defect_Desc,
         startDate: new Date(),
@@ -35,7 +21,7 @@ module.exports = async (srv) => {
         defectStatus: "Open",
         team: data.Resolving_Team,
         assignee: data.Assign_To,
-        reporter: "XYZ",
+        reporter: "Carla Mathew",
         priority: oPrioirty
       }
       await cds.run(INSERT.into(jira).entries(obj));
@@ -46,6 +32,13 @@ module.exports = async (srv) => {
     } catch (error) {
       return req.reject(500, error.message);
     }
+  });
+
+  srv.on('PUT', 'JiraExcelUpload', async (req) => {
+    let sheetData = await excelOps.getExcel(req);
+    let DBInsert = await dbOps.insertExcelJiratoDB(sheetData);
+    // logger.info(constants.BTPLogging + "Excel SuccessFully Fetched" + JSON.stringify(sheetData.Item));
+    return sheetData;
   });
 
 }

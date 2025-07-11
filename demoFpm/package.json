@@ -20,7 +20,8 @@
     "@sap/xssec": "^4",
     "cf-nodejs-logging-support": "^6.14.1",
     "express": "^4",
-    "hdb": "^0.19.11"
+    "hdb": "^0.19.11",
+    "node-xlsx": "^0.24.0"
   },
   "engines": {
     "node": ">=20"

@@ -6,7 +6,8 @@ using {
   sap.common.CodeList
 } from '@sap/cds/common';
 
-entity jira : cuid, managed {
+entity jira : managed {
+  key ID          : String;
   defectID       : String;
   defectDesc     : String;
   startDate      : Timestamp;
@@ -23,7 +24,8 @@ entity jira : cuid, managed {
   comment        : String;
 }
 
-entity processArea : cuid, managed {
+entity processArea : managed {
+  key ID             : String;
   totalDefects       : String;
   openCount          : String;
   closedCount        : String;
@@ -35,7 +37,8 @@ entity processArea : cuid, managed {
                          on details.parent = $self;
 }
 
-entity processAreaDetails : cuid, managed {
+entity processAreaDetails : managed {
+  key ID             : String;
   taskId          : String;
   title           : String;
   assignee        : String;
@@ -44,7 +47,7 @@ entity processAreaDetails : cuid, managed {
   dueDate         : Date;
   tags            : String;
   responsibleTeam : String;
-  parent          : Association to processArea;
+  parent          : Association to one processArea;
 }
 
 entity task : cuid, managed {

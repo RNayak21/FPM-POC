@@ -1,13 +1,13 @@
 ID;taskId;title;assignee;status;priority;dueDate;tags;responsibleTeam;parent_ID
-1;T-MK-001;Resolve login issue;Alice;Open;High;2025-07-10;UI,Bug;Frontend;1
-2;T-MK-002;Fix missing parts;Bob;Closed;Medium;2025-07-05;Inventory;Operations;1
-3;T-PL-001;Review planning strategy;Carol;In Progress;High;2025-07-15;Planning;Management;2
-4;T-PL-002;Update forecast model;Dan;Open;Medium;2025-07-12;Forecast;Analytics;2
-5;T-DL-001;Delivery delay issue;Eve;Closed;Low;2025-07-01;Logistics;Delivery;3
-6;T-LO-001;Logistic route mapping;Frank;In Progress;High;2025-07-11;Transport;Logistics;4
-7;T-FN-001;Fix finance report;Grace;Open;High;2025-07-13;Accounting;Finance;5
-8;T-SC-001;Source evaluation;Helen;Closed;Medium;2025-07-03;Supplier;Procurement;6
-9;T-MD-001;Master data sync;Ivan;In Progress;Low;2025-07-08;Data;IT;7
+11;T-MK-001;Resolve login issue;Alice;Open;High;2025-07-10;UI,Bug;Frontend;1
+12;T-MK-002;Fix missing parts;Bob;Closed;Medium;2025-07-05;Inventory;Operations;1
+13;T-PL-001;Review planning strategy;Carol;In Progress;High;2025-07-15;Planning;Management;2
+14;T-PL-002;Update forecast model;Dan;Open;Medium;2025-07-12;Forecast;Analytics;2
+15;T-DL-001;Delivery delay issue;Eve;Closed;Low;2025-07-01;Logistics;Delivery;3
+16;T-LO-001;Logistic route mapping;Frank;In Progress;High;2025-07-11;Transport;Logistics;4
+17;T-FN-001;Fix finance report;Grace;Open;High;2025-07-13;Accounting;Finance;5
+18;T-SC-001;Source evaluation;Helen;Closed;Medium;2025-07-03;Supplier;Procurement;6
+19;T-MD-001;Master data sync;Ivan;In Progress;Low;2025-07-08;Data;IT;7
 10;T-QU-001;Product quality review;Julia;Open;High;2025-07-14;Testing;Quality;8
 
  

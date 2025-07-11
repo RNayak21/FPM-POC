@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns:tnt="sap.tnt" xmlns:macros="sap.fe.macros"
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:layout="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+   controllerName="jnj.com.zbumak5042fpm.ext.main.Main"
+   id="CreateHU"
+>
+<Dialog
+      id="CreateHUFragment"
+      title = "JIRA Mass Upload"
+      resizable="false"   
+      draggable="true">  
+        <content>
+            <VBox alignItems="Center">
+                <u:FileUploader 
+                    id="fileUploader" 
+                    class="sapUiResponsiveMargin"
+                    name="fileUpload" 
+                    placeholder="Choose an Excel file"
+                    httpRequestMethod="Put"
+                    useMultipart="false"
+                    width="20rem"
+                    fileType="xlsx,xls"
+                    sendXHR="true"
+                    change="onFileBrowse" />
+                
+            </VBox>
+        </content>
+        <beginButton>
+            <Button text="Cancel" press="onCancel"></Button>
+        </beginButton>
+        <endButton>
+            <Button text="Ok" type="Emphasized" press="onUploadExcel"></Button>
+        </endButton>
+
+</Dialog>
+</core:FragmentDefinition>
+

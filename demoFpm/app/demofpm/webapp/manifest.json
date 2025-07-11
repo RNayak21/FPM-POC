@@ -195,7 +195,15 @@
               "content": {
                 "header": {
                   "anchorBarVisible": true,
-                  "visible": true
+                  "visible": true,
+                  "actions": {
+                    "IdNavBack": {
+                      "press": "demo.com.demofpm.ext.controller.ControllerExt.onNavBack",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Back"
+                    }
+                  }
                 },
                 "body": {
                   "sections": {

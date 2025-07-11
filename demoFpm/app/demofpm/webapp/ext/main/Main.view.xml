@@ -1,6 +1,6 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:macrosTable="sap.fe.macros.table" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="demo.com.demofpm.ext.main.Main" xmlns:f="sap.f" xmlns:v="sap.ui.fl.variants" xmlns:filterBar="sap.fe.macros.filterBar">
+<mvc:View xmlns:simple="sap.gantt.simple" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:macrosTable="sap.fe.macros.table" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="demo.com.demofpm.ext.main.Main" xmlns:f="sap.f" xmlns:v="sap.ui.fl.variants" xmlns:filterBar="sap.fe.macros.filterBar">
     <NavContainer id="navContainer" height="100%">
-        <f:DynamicPage id="_IDGenDynamicPage" class="sapUiResponsiveContentPadding">
+        <f:DynamicPage id="_IDGenDynamicPage" class="sapUiResponsiveContentPadding" showFooter="true">
             <f:title>
                 <f:DynamicPageTitle id="_IDGenDynamicPageTitle">
                     <f:heading>
@@ -69,6 +69,16 @@
                     </FlexBox>
                 </VBox>
             </f:content>
+            <f:footer >
+                <OverflowToolbar id="oToolBarContainer">
+                    <ToolbarSpacer id="toolBarSpacerID" ></ToolbarSpacer>
+                    <Toolbar id="oToolBar">
+                        <Button icon="sap-icon://download" id="DownloadBn" text="Download Template" press="onDownloadTemplate"></Button>
+                        <Button icon="sap-icon://upload" id="UploadBtn" text="Upload" press="openUploadDialog" type="Emphasized"></Button>
+                    </Toolbar>
+                </OverflowToolbar>
+            </f:footer>
         </f:DynamicPage>
+        
     </NavContainer>
 </mvc:View>
