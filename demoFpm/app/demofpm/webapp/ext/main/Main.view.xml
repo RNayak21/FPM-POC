@@ -7,7 +7,7 @@
                         <Title id="_IDGenTitle" text="JIRA DASHBOARD" level="H2"/>
                     </f:heading>
                     <f:snappedContent>
-                        <Panel id="_IDGenPanel" headerText="Process Area - HIGH PRIORITY DEFECT">
+                        <Panel id="_IDGenPanel" headerText="Process Area - HIGH PRIORITY DEFECTS">
                             <HeaderContainer id="_IDGenHeaderContainer" scrollStep="200" showDividers="false" content="{
                                     path: '/ProcessAreaEntity'
                                 }">

@@ -9,8 +9,8 @@ ID;defectID;defectDesc;priority_code;startDate;endDate;functionalArea;defectStat
 8;JIR-7050;Source module not triggering BTP events as expected;L;2024-06-10;2024-06-15;Source;Open;BTP App;Giulia Moretti;Lucas Weber;2024-06-10;;Bug;;
 9;JIR-7051;Finance KPI app not loading on BTP Launchpad;H;2024-06-25;2024-06-30;Finance;Closed;ABAP;Andreas Keller;Sophie Dubois;2024-06-30;2024-06-30;Bug;;
 10;JIR-7052;BTP destination connectivity timeout in Plan module;M;2024-05-18;2024-05-21;Plan;In Progress;Security;Katarina Novak;Olivier Blanc;2024-05-21;;Bug;;
-11;JIR-8001;Create pipeline for automated BTP deployments;H;2024-07-01;2024-07-07;Plan;In Progress;Security;Lea Fischer;Markus Braun;;;Build;;
-12;JIR-8002;Initial setup of SAP CAP project for new module;M;2024-06-15;2024-06-20;Delivery;Closed;ABAP;Sara Lindholm;Alex Tan;2024-06-20;2024-06-20;Build;;
-13;JIR-8003;Configure SAP Launchpad Service for new project;L;2024-06-10;2024-06-12;Master Data;Open;BTP App;Diego Costa;Nina Zhang;;;Build;;
-14;JIR-8004;Provision BTP Subaccount and entitlements;M;2024-05-01;2024-05-03;Logistics;Closed;Platform;Olga Petrov;Ravi Mehra;2024-05-03;2024-05-03;Build;;
-15;JIR-8005;Develop Fiori Elements list report;H;2024-07-02;2024-07-10;MAKE;In Progress;BTP App;Maya Singh;Tom Eriksen;;;Build;;
+11;JIR-8001;Create pipeline for automated BTP deployments;H;2024-07-01;2024-07-07;Plan;In Progress;Security;Lea Fischer;Markus Braun;;;Bug;;
+12;JIR-8002;Initial setup of SAP CAP project for new module;M;2024-06-15;2024-06-20;Delivery;Closed;ABAP;Sara Lindholm;Alex Tan;2024-06-20;2024-06-20;Bug;;
+13;JIR-8003;Configure SAP Launchpad Service for new project;L;2024-06-10;2024-06-12;Master Data;Open;BTP App;Diego Costa;Nina Zhang;;;Bug;;
+14;JIR-8004;Provision BTP Subaccount and entitlements;M;2024-05-01;2024-05-03;Logistics;Closed;Platform;Olga Petrov;Ravi Mehra;2024-05-03;2024-05-03;Bug;;
+15;JIR-8005;Develop Fiori Elements list report;H;2024-07-02;2024-07-10;MAKE;In Progress;BTP App;Maya Singh;Tom Eriksen;;;Bug;;

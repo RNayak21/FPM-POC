@@ -10,7 +10,7 @@ module.exports = async (srv) => {
   srv.on("createIncidents", async (req) => {
     try {
       let data = req.data;
-      let oPrioirty = util.getPriority(data.priority);
+      let oPrioirty = await util.getPriority(data.priority);
       let obj = {
         ID : uuidv4(),
         defectID: data.Defect_ID,
@@ -22,7 +22,8 @@ module.exports = async (srv) => {
         team: data.Resolving_Team,
         assignee: data.Assign_To,
         reporter: "Carla Mathew",
-        priority: oPrioirty
+        priority: oPrioirty,
+        Type: "Bug"
       }
       await cds.run(INSERT.into(jira).entries(obj));
       return {

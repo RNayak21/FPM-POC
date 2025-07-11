@@ -21,7 +21,8 @@ async function insertExcelJiratoDB(jiraRecords) {
                 team: record['Resolving Team'],
                 assignee: record['Assignee'],
                 reporter: record['Reporter'],
-                priority: oPrioirty
+                priority: oPrioirty,
+                Type: "Bug"
             };
             insertRecords.push(oPayload);
         });

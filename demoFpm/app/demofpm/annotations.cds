@@ -118,7 +118,7 @@ annotate service.JiraEntity with @(
         {
             $Type : 'UI.DataField',
             Value : createdAt,
-              ![@UI.Hidden] : true
+             ![@UI.Hidden] : true
         },
         {
             $Type : 'UI.DataField',
@@ -134,7 +134,7 @@ annotate service.JiraEntity with @(
         {
             $Type : 'UI.DataField',
             Value : modifiedAt,
-              ![@UI.Hidden] : true
+             ![@UI.Hidden] : true
         },
     ],
     UI.SelectionPresentationVariant #table : {
@@ -231,6 +231,12 @@ annotate service.JiraEntity with @(
                 Label : '{i18n>Team}',
                 ![@UI.PartOfPreview] : false
             },
+            {
+                $Type : 'UI.DataField',
+                Value : comment,
+                Label : '{i18n>Comment}',
+                 ![@UI.PartOfPreview] : false
+            },
         ],
     },
 
@@ -284,7 +290,6 @@ annotate service.JiraEntity with {
 
 annotate service.JiraEntity with {
     assignee @(
-        UI.MultiLineText : true,
         Common.FieldControl : #Mandatory,
     )
 };
@@ -717,4 +722,11 @@ annotate service.ProcessAreaDetailsEntity with @(
         },
     ]
 );
+
+annotate service.JiraEntity with {
+    comment @(
+        UI.MultiLineText : true,
+        Common.FieldControl : #Mandatory,
+    )
+};
 
