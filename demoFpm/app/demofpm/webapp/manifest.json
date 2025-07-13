@@ -158,7 +158,7 @@
                         "placement": "After",
                         "anchor": "Information"
                       },
-                      "title": "Defect LifeCycle"
+                      "title": "Defect Life Cycle"
                     },
                     "ChartDisplay": {
                       "template": "demo.com.demofpm.ext.fragment.ChartDisplay",

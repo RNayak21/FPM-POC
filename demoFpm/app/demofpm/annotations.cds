@@ -704,12 +704,6 @@ annotate service.ProcessAreaDetailsEntity with @(
         },
         {
             $Type : 'UI.DataField',
-            Value : status,
-            Label : 'Status',
-            @UI.Importance : #High,
-        },
-        {
-            $Type : 'UI.DataField',
             Value : dueDate,
             Label : 'Due Date',
             @UI.Importance : #High,
@@ -719,6 +713,11 @@ annotate service.ProcessAreaDetailsEntity with @(
             Value : assignee,
             Label : 'Assigned To',
             @UI.Importance : #High,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : priority,
+            Label : '{i18n>Priority}',
         },
     ]
 );

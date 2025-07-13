@@ -1,13 +1,66 @@
 ID;taskId;title;assignee;status;priority;dueDate;tags;responsibleTeam;parent_ID
-11;T-MK-001;Resolve login issue;Alice;Open;High;2025-07-10;UI,Bug;Frontend;1
-12;T-MK-002;Fix missing parts;Bob;Closed;Medium;2025-07-05;Inventory;Operations;1
-13;T-PL-001;Review planning strategy;Carol;In Progress;High;2025-07-15;Planning;Management;2
-14;T-PL-002;Update forecast model;Dan;Open;Medium;2025-07-12;Forecast;Analytics;2
-15;T-DL-001;Delivery delay issue;Eve;Closed;Low;2025-07-01;Logistics;Delivery;3
-16;T-LO-001;Logistic route mapping;Frank;In Progress;High;2025-07-11;Transport;Logistics;4
-17;T-FN-001;Fix finance report;Grace;Open;High;2025-07-13;Accounting;Finance;5
-18;T-SC-001;Source evaluation;Helen;Closed;Medium;2025-07-03;Supplier;Procurement;6
-19;T-MD-001;Master data sync;Ivan;In Progress;Low;2025-07-08;Data;IT;7
-10;T-QU-001;Product quality review;Julia;Open;High;2025-07-14;Testing;Quality;8
-
- 
+101;JIR-4001;Review BTP integration for MAKE;Alice;Open;High;2025-07-14;SAP BTP;BTP Team;1
+102;JIR-9002;Fix ABAP logic in MAKE;Bob;In Progress;High;2025-07-15;ABAP;ABAP Dev;1
+103;JIR-6003;Audit roles in MAKE process;Charlie;Open;High;2025-07-16;Security;Security Team;1
+104;JIR-3004;Check jobs for MAKE module;David;Open;High;2025-07-17;Basis;SAP Basis;1
+105;JIR-4005;Enhance workflow on BTP;Eva;In Progress;High;2025-07-18;SAP BTP;BTP Team;1
+106;JIR-9006;Debug ABAP issue in MAKE;Frank;Open;High;2025-07-19;ABAP;ABAP Dev;1
+107;JIR-6007;Review security logs in MAKE;Grace;Closed;High;2025-07-20;Security;Security Team;1
+108;JIR-3008;Transport error in MAKE;Helen;Open;High;2025-07-21;Basis;SAP Basis;1
+109;JIR-4009;BTP connectivity issue;Ivan;Open;High;2025-07-22;SAP BTP;BTP Team;1
+110;JIR-9010;Fix loop in ABAP code;Julia;Open;High;2025-07-23;ABAP;ABAP Dev;1
+111;JIR-4001;Review planning iFlow on BTP;Alice;Open;High;2025-07-14;SAP BTP;BTP Team;2
+112;JIR-9002;Correct ABAP formulas in PLAN;Bob;Open;High;2025-07-15;ABAP;ABAP Dev;2
+113;JIR-6003;Secure planning roles;Charlie;Open;High;2025-07-16;Security;Security Team;2
+114;JIR-3004;Check batch jobs in planning;David;In Progress;High;2025-07-17;Basis;SAP Basis;2
+115;JIR-4005;Optimize BTP APIs;Eva;Open;High;2025-07-18;SAP BTP;BTP Team;2
+116;JIR-9006;Optimize ABAP reports;Frank;Open;High;2025-07-19;ABAP;ABAP Dev;2
+117;JIR-6007;Update access controls;Grace;Open;High;2025-07-20;Security;Security Team;2
+118;JIR-3008;Transport issue on dev system;Helen;Open;High;2025-07-21;Basis;SAP Basis;2
+119;JIR-4009;BTP errors in plan sync;Ivan;Open;High;2025-07-22;SAP BTP;BTP Team;2
+120;JIR-4001;Check delivery sync on BTP;Alice;Open;Critical;2025-07-14;SAP BTP;BTP Team;3
+121;JIR-9002;Fix ABAP logic in delivery calc;Bob;Closed;Critical;2025-07-15;ABAP;ABAP Dev;3
+122;JIR-6003;Audit delivery access;Charlie;Open;Critical;2025-07-16;Security;Security Team;3
+123;JIR-3004;Delivery jobs failing;David;Open;Critical;2025-07-17;Basis;SAP Basis;3
+124;JIR-4001;BTP performance in logistics;Alice;Open;High;2025-07-14;SAP BTP;BTP Team;4
+125;JIR-9002;Fix logistic ABAP modules;Bob;Open;High;2025-07-15;ABAP;ABAP Dev;4
+126;JIR-6003;Logistic data security check;Charlie;Open;High;2025-07-16;Security;Security Team;4
+127;JIR-3004;Transport logistics patch;David;Open;High;2025-07-17;Basis;SAP Basis;4
+128;JIR-4005;iFlow in logistics delayed;Eva;Open;High;2025-07-18;SAP BTP;BTP Team;4
+129;JIR-4001;Finance data not syncing to BTP;Alice;Open;High;2025-07-14;SAP BTP;BTP Team;5
+130;JIR-9002;Fix ABAP in finance reports;Bob;Open;High;2025-07-15;ABAP;Finance Dev;5
+131;JIR-6003;Finance role review;Charlie;Open;High;2025-07-16;Security;Security Team;5
+132;JIR-3004;Finance background job errors;David;Open;High;2025-07-17;Basis;SAP Basis;5
+133;JIR-4005;Reconnect finance to BTP API;Eva;Open;High;2025-07-18;SAP BTP;BTP Team;5
+134;JIR-9006;Fix calc logic in reports;Frank;Open;High;2025-07-19;ABAP;Finance Dev;5
+135;JIR-6007;Update finance access policy;Grace;Open;High;2025-07-20;Security;Security Team;5
+136;JIR-4001;Supplier data failing in BTP;Alice;In Progress;High;2025-07-14;SAP BTP;BTP Team;6
+137;JIR-9002;Fix ABAP issue in source logic;Bob;Open;High;2025-07-15;ABAP;ABAP Dev;6
+138;JIR-6003;Secure sourcing records;Charlie;Open;High;2025-07-16;Security;Security Team;6
+139;JIR-3004;Source transport stuck;David;Open;High;2025-07-17;Basis;SAP Basis;6
+140;JIR-4005;BTP message queue delay;Eva;Open;High;2025-07-18;SAP BTP;BTP Team;6
+141;JIR-4001;Master data load failed in BTP;Alice;Open;High;2025-07-14;SAP BTP;BTP Team;7
+142;JIR-9002;Fix ABAP logic in MD module;Bob;Open;High;2025-07-15;ABAP;ABAP Dev;7
+143;JIR-6003;Master data access policy review;Charlie;Open;High;2025-07-16;Security;Security Team;7
+144;JIR-3004;Background job failure for MD;David;Open;High;2025-07-17;Basis;SAP Basis;7
+145;JIR-4005;MD integration failed in BTP;Eva;Open;High;2025-07-18;SAP BTP;BTP Team;7
+146;JIR-9006;Optimize master data fetch logic;Frank;Open;High;2025-07-19;ABAP;ABAP Dev;7
+147;JIR-4001;QA data not synced on BTP;Alice;Open;High;2025-07-14;SAP BTP;BTP Team;8
+148;JIR-4006;Check logistics BTP jobs;Karan;Open;High;2025-07-19;SAP BTP;BTP Team;4
+149;JIR-9007;Logistics ABAP loop fix;Tina;Open;High;2025-07-20;ABAP;ABAP Dev;4
+150;JIR-4006;BTP integration for invoices;Ramesh;Open;High;2025-07-21;SAP BTP;BTP Team;5
+151;JIR-9007;Optimize ABAP for finance reports;Neha;Open;High;2025-07-22;ABAP;Finance Dev;5
+152;JIR-6008;Finance access control update;Ishaan;In Progress;High;2025-07-23;Security;Security Team;5
+153;JIR-6006;Secure source contract data;Suman;Open;High;2025-07-21;Security;Security Team;6
+154;JIR-6007;Review MD security audit logs;Mehul;Open;High;2025-07-20;Security;Security Team;7
+155;JIR-3005;Transport errors in QA;Maya;Open;Critical;2025-07-18;Basis;SAP Basis;8
+156;JIR-4006;Reconnect QA to BTP destinations;Kavya;Open;High;2025-07-19;SAP BTP;BTP Team;8
+157;JIR-9007;Fix ABAP for QA metrics;Nikhil;In Progress;High;2025-07-20;ABAP;ABAP Dev;8
+158;JIR-6008;Update QA role definitions;Sneha;Open;High;2025-07-21;Security;Security Team;8
+159;JIR-3009;Job failure alerts in QA;Arun;Open;Critical;2025-07-22;Basis;SAP Basis;8
+160;JIR-4010;Analyze BTP logs for QA failures;Leela;Open;High;2025-07-23;SAP BTP;BTP Team;8
+161;JIR-9011;Debug QA report ABAP;Jatin;Open;High;2025-07-24;ABAP;ABAP Dev;8
+162;JIR-6012;QA system access audit;Bhavya;Open;High;2025-07-25;Security;Security Team;8
+163;JIR-9002;Defective ABAP code in QA;Bob;Open;High;2025-07-15;ABAP;ABAP Dev;8
+164;JIR-6003;Security misconfig in QA;Charlie;Open;High;2025-07-16;Security;Security Team;8
+165;JIR-3004;QA background jobs failing;David;Open;Critical;2025-07-17;

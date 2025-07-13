@@ -13,3 +13,18 @@ TSK-2211,App not showing toast message on success or error,Ankit,In-Progress,Low
 TSK-2212,Order iflow throwing HTTP 500 error during POST,Amit,Open,High,2025-07-12,"cpi, integration",BTP CPI
 TSK-2213,Mapping logic needs to be enhanced for delivery flow,Karan,In-Progress,Medium,2025-07-17,"cpi, mapping",BTP CPI
 TSK-2214,User role assignment automation missing,Shruti,Open,Medium,2025-07-22,"security, role",Security
+TSK-2215,Fix ABAP financial validation,Anil,Open,High,2025-07-23,"ABAP, finance",ABAP Cloud
+TSK-2216,Optimize ABAP tax computation,Rina,Open,Medium,2025-07-24,"ABAP, tax",ABAP Cloud
+TSK-2217,Correct ABAP balance checks,Sunil,Open,High,2025-07-25,"ABAP, finance",ABAP Cloud
+TSK-2218,Enhance ABAP ledger logic,Divya,In-Progress,Medium,2025-07-26,"ABAP, ledger",ABAP Cloud
+TSK-2219,Add ABAP logging to finance module,Meena,Open,Low,2025-07-27,"ABAP, logging",ABAP Cloud
+TSK-2220,Develop new BTP dashboard,Ajay,Open,High,2025-07-23,"SAP BTP, dashboard",BTP App
+TSK-2221,Create BTP-based tracking for logistics,Tara,Open,Medium,2025-07-24,"SAP BTP, tracking",BTP App
+TSK-2222,Build MD monitoring tool in BTP,Deepak,Open,High,2025-07-25,"SAP BTP, monitoring",BTP App
+TSK-2223,Monitor QA transports,Nikita,Open,Critical,2025-07-23,"transport, qa",BASIS
+TSK-2224,Fix transport errors in SOURCE,Amit,Open,High,2025-07-24,"transport, source",BASIS
+TSK-2225,Check master data background jobs,Anusha,In-Progress,Medium,2025-07-25,"background jobs, MD",BASIS
+TSK-2226,Migrate planning logic to ABAP Classic,Vijay,Open,High,2025-07-23,"ABAP Classic, planning",ABAP Classic
+TSK-2227,ABAP Classic tuning for MD sync,Neel,Open,Medium,2025-07-24,"ABAP Classic, sync",ABAP Classic
+TSK-2228,Fix ABAP Classic error in QA module,Simran,Open,High,2025-07-25,"ABAP Classic, QA",ABAP Classic
+TSK-2229,Improve ABAP Classic report execution,Ravi,Open,Medium,2025-07-26,"ABAP Classic, reports",ABAP Classic

@@ -13,4 +13,4 @@ ID;defectID;defectDesc;priority_code;startDate;endDate;functionalArea;defectStat
 12;JIR-8002;Initial setup of SAP CAP project for new module;M;2024-06-15;2024-06-20;Delivery;Closed;ABAP;Sara Lindholm;Alex Tan;2024-06-20;2024-06-20;Bug;;
 13;JIR-8003;Configure SAP Launchpad Service for new project;L;2024-06-10;2024-06-12;Master Data;Open;BTP App;Diego Costa;Nina Zhang;;;Bug;;
 14;JIR-8004;Provision BTP Subaccount and entitlements;M;2024-05-01;2024-05-03;Logistics;Closed;Platform;Olga Petrov;Ravi Mehra;2024-05-03;2024-05-03;Bug;;
-15;JIR-8005;Develop Fiori Elements list report;H;2024-07-02;2024-07-10;MAKE;In Progress;BTP App;Maya Singh;Tom Eriksen;;;Bug;;
+15;JIR-8005;Develop Fiori Elements list report;H;2024-07-02;2024-07-10;MAKE;In Progress;BTP App;Maya Singh;Tom Eriksen;;;Build;;
